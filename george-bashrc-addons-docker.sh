@@ -32,11 +32,16 @@ function docker_tag()
 echo "dbr..................: docker build and run the Dockerfile"
 function dbr()
 {
-  docker build .
-  docker run -it $(docker images --format "{{.ID}} {{.CreatedAt}}" | sort -rk 2 | awk 'NR==1{print $1}')
+  # docker build .
+  docker-compose build
+  # docker run -it $(docker images --format "{{.ID}} {{.CreatedAt}}" | sort -rk 2 | awk 'NR==1{print $1}')
+  docker up
 }
 
 function docker_last_image()
 {
   echo $(docker images --format "{{.ID}} {{.CreatedAt}}" | sort -rk 2 | awk 'NR==1{print $1}')
 }
+
+# how to get docker container to serve an X11 app:
+# https://gursimar27.medium.com/run-gui-applications-in-a-docker-container-ca625bad4638

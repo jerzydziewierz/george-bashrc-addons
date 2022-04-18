@@ -97,10 +97,12 @@ open, edit, execute as needed. Parts of it you might need after other steps are 
 ```bash 
 mkdir -p ~/git ~/prog
 pushd ~/git
-git clone https://github.com/jerzydziewierz/george-bashrc-addons.git
-echo "pushd ~/git/george-bashrc-addons/"
+git clone https://github.com/jerzydziewierz/george-bashrc-addons.git ~/git/george-bashrc-addons/
+
+echo "pushd ~/git/george-bashrc-addons/" >> ~/.bashrc
 echo ". ~/git/george-bashrc-addons/george-bashrc-addons.sh" >> ~/.bashrc
 echo "popd" >> ~/.bashrc
+
 pushd ~/git/george-bashrc-addons/
 cp secrets.template.sh secrets.sh
 popd

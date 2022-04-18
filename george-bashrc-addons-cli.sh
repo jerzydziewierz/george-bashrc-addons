@@ -53,7 +53,7 @@ echo "ctrl-R, ctrl-T.......: last command, file search"
 
 
 # note: it may be risky to shadow the cd command
-function cd() {
- z "$@"
-}
+#function cd() {
+# z "$@"
+#}
 

@@ -12,7 +12,7 @@ sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt install -y gcc-11 g++-11
 
 # desktop tools
-apt install -y kate krusader qalculate vlc shutter fsearch
+apt install -y xclock kate krusader qalculate vlc shutter fsearch
 # fsearch filesystem indexing and search
 
 
