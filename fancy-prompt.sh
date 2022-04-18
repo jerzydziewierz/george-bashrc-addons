@@ -104,7 +104,7 @@ __powerline() {
         fi
         PS1=""
         if [ $(whoami) = "root" ]; then
-          PS1+="$BG_RED|$RESET$FG_RED|ROOT|$RESET"
+          PS1+="${BG_RED}${FG_RED}|${RESET}${FG_RED}ROOT${BG_RED}|${RESET}"
         fi
 
         PS1+="$FG_COLOR1$BOLD$FG_YELLOW$BOXNAME$RESET"
@@ -115,7 +115,7 @@ __powerline() {
         PS1+="$BG_EXIT$RESET"
         PS1+="$BG_EXIT$FG_BASE3 ${PS_SYMBOL} ${RESET}${FG_EXIT}${RESET} "
     }
-    
+
     PROMPT_COMMAND=ps1
 }
 
