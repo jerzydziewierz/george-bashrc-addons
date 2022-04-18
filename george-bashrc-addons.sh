@@ -13,8 +13,7 @@
 . george-bashrc-addons-reymonte.sh
 . george-bashrc-addons-devel-tools.sh
 . fancy-prompt.sh
-# private most often used links
-. george-bashrc-addons-links.sh
+
 
 #    .....................:
 # echo "gping.............: gping"
@@ -38,5 +37,6 @@ function make_link()
 echo -e -n "\e]8;;$1\a$2\e]8;;\a"
 }
 
-
+# private most often used links
+. george-bashrc-addons-links.sh
 
