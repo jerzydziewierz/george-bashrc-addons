@@ -28,8 +28,8 @@ function docker_tag()
   docker tag $1 $REYMONTE_IMAGE_REGISTRY_ADDRESS/sources/$1
 }
 
-# ..........................:
-echo "dbr...................: docker build and run the Dockerfile"
+# .........................:
+echo "dbr..................: docker build and run the Dockerfile"
 function dbr()
 {
   docker build .
