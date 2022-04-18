@@ -40,3 +40,11 @@ echo -e -n "\e]8;;$1\a$2\e]8;;\a"
 # private most often used links
 . george-bashrc-addons-links.sh
 
+echo "ubrc.................: update bashrc addons from git repo"
+function ubrc()
+{
+  pushd ~/git/george-bashrc-addons/
+  git pull
+  popd
+  sb
+}
