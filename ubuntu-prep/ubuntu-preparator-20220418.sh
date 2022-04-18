@@ -5,14 +5,17 @@ mkdir -p prog git prog/git
 pushd prog
 apt update  
 apt upgrade -y -force-confnew
-apt install -y kate krusader sshfs git make screen p7zip-full curl wget coreutils sed build-essential python3 python3-pip gcc-10 g++-10 sysstat
-apt install -y gcc-10 g++-10
-# fsearch filesystem indexing and search
-snap install qalculate vlc shutter fsearch
-
-# if needed: gcc-11 
+# CLI-only tools
+apt install -y sshfs git make screen p7zip-full curl wget coreutils sed build-essential python3 python3-pip gcc-10 g++-10 sysstat
+# if needed: gcc-11
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt install -y gcc-11 g++-11
+
+# desktop tools
+apt install -y kate krusader qalculate vlc shutter fsearch
+# fsearch filesystem indexing and search
+
+
 
 # docker
 apt install -y apache2-utils
