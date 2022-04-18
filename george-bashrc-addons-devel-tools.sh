@@ -101,10 +101,11 @@ watch -d -n 30 bash -i -c __notesync_internal
 echo "gap..................: git add, commit and push"
 function gap()
 {
-cd $(git rev-parse --show-toplevel)
+pushd $(git rev-parse --show-toplevel)
 git add .
 git commit -m 'auto'
 git push
+popd
 }
 #     .....................:
 echo "dfh..................: show device free space"
