@@ -9,7 +9,9 @@ some are dependent on software packages already installed on the system
 
 # Summary
 
-## General 
+I'll leave some features undocumented. 
+
+### General 
 
 **gping** 
 shortcut to gping a couple of my favorite locations.
@@ -26,7 +28,7 @@ make_link "George" "http://rey.wiki"
 
 The intention is to extend [terminator](https://github.com/gnome-terminator/terminator) to support executing shell commands 
 
-## CLI
+### CLI
 
 **z** 
 Interface to zoxide 
@@ -48,7 +50,7 @@ see https://github.com/junegunn/fzf
 file search using fzf
 see https://github.com/junegunn/fzf
 
-## Devel
+### Devel
 
 **mambao**
 shortcut to [mamba install](https://github.com/mamba-org/mamba)  
@@ -68,7 +70,7 @@ git add, commit and push. Works from any folder in the repo and then comes back 
 **dfh**
 show device's free storage space. uses `df` but filters out junk info.
 
-## Screen
+### Screen
 
 my shortcuts to use the immensely useful [gnu screen](https://www.gnu.org/software/screen/) tool 
 

@@ -12,7 +12,13 @@ snap install qalculate vlc shutter fsearch
 
 # if needed: gcc-11 
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-apt install -y -force-confnew gcc-11 g++-11
+apt install -y gcc-11 g++-11
+
+# docker
+apt install -y apache2-utils
+sudo curl -fsSL https://get.docker.com |bash
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 # nvidia CUDA along with the drivers
 # 
