@@ -104,10 +104,10 @@ __powerline() {
         fi
         PS1=""
         if [ $(whoami) = "root" ]; then
-          PS1+="$FG_RED =ROOT= $RESET"
+          PS1+="$FG_RED|ROOT|$RESET"
         fi
 
-        PS1+="$FG_COLOR1$BOLD$YELLOW$BOXNAME$RESET"
+        PS1+="$FG_COLOR1$BOLD$FG_YELLOW$BOXNAME$RESET"
         PS1+="|"$CONDA_DEFAULT_ENV"|"
         PS1+="$BG_COLOR5 \\w "
         PS1+="$RESET${FG_COLOR6}"
