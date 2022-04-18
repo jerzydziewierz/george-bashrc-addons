@@ -30,14 +30,14 @@ function gping()
 
 
 #     .....................:
-echo "sb...................: reload .bashrc"
-function sb()
+# echo "rc...................: reload .bashrc"
+function rc()
 {
     . ~/.bashrc
 }
 
-echo "ubrc.................: update bashrc addons from git repo"
-function ubrc()
+echo "uprc.................: update bashrc addons from git repo"
+function uprc()
 {
   pushd ~/git/george-bashrc-addons/
   git pull

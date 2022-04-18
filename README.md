@@ -16,8 +16,11 @@ I'll leave some features undocumented.
 **gping** 
 shortcut to gping a couple of my favorite locations.
 
-**sb**
+**rc**
 this will reload .bashrc. Shortcut to `. ~/.bashrc`
+
+**uprc**
+this will reload the `george-bashrc-addons` from github. 
 
 **make_link**
 this will build a string that (in some terminals) will appear like a clickable link.
@@ -31,20 +34,17 @@ The intention is to extend [terminator](https://github.com/gnome-terminator/term
 ### CLI
 
 **z** 
-Interface to zoxide 
-see https://github.com/ajeetdsouza/zoxide
+Interface to [zoxide](https://github.com/ajeetdsouza/zoxide)
 
-**zi** interface to zoxide 
-see https://github.com/ajeetdsouza/zoxide
+**zi** interface to [zoxide](see https://github.com/ajeetdsouza/zoxide)
 
 **fix_zoxide**
-if you used zoxide in root mode (not sudo mode), it's database might be marked as owned by root. 
-This will bring back the ownership back to the user
+if you used `zoxide` in root mode (not sudo mode), it's database might be marked as owned by root. 
+This will bring back the ownership back to the user. Needs `sudo`.
 
 **ctrl-R** 
 last command search using fzf 
 see https://github.com/junegunn/fzf
-
 
 **ctrl-T**
 file search using fzf
