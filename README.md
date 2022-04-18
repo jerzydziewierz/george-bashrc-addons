@@ -45,14 +45,13 @@ popd
 
 ### STEP 3
 
-copy `secrets.template.sh` to `secrets.sh` 
-
-edit `secrets.sh` to add secrets
+```bash
+nano secrets.sh
+```
 
 ### STEP 4
 
-
-add this line to `~/.bashrc` :
+Install to run automatically
 
 ```bash
 echo ". ~/git/george-bashrc-addons/george-bashrc-addons.sh" >> ~/.bashrc 

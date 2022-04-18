@@ -10,6 +10,9 @@ apt install -y gcc-10 g++-10
 # fsearch filesystem indexing and search
 snap install qalculate vlc shutter fsearch
 
+# if needed: gcc-11 
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+apt install -y -force-confnew gcc-11 g++-11
 
 # nvidia CUDA along with the drivers
 # 
@@ -97,13 +100,19 @@ wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 sudo apt update
 sudo apt install -y gping
 
+# ::: rust 
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+
 # ::: gping from sources
 # - in ~/prog
 git clone https://github.com/orf/gping.git
+cd gping
+cargo build --release 
+cd gping 
+cargo install --path .
 
 
-# ::: rust 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 
 # ::: Typora
