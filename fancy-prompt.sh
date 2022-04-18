@@ -103,7 +103,7 @@ __powerline() {
             local FG_EXIT="$FG_RED"
         fi
         PS1=""
-        if [ $(whoami) -eq "root" ]; then
+        if [ $(whoami) = "root" ]; then
           PS1+="$FG_RED =ROOT= $RESET"
         fi
 
