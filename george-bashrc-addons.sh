@@ -12,7 +12,7 @@
 # load reymonte commands
 . george-bashrc-addons-reymonte.sh
 . george-bashrc-addons-devel-tools.sh
-. fancy-prompt
+. fancy-prompt.sh
 # private most often used links
 . george-bashrc-addons-links.sh
 
