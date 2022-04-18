@@ -42,7 +42,7 @@ function ubrc()
   pushd ~/git/george-bashrc-addons/
   git pull
   popd
-  sb
+  . ~/.bashrc
 }
 
 
