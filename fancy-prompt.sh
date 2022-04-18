@@ -104,7 +104,7 @@ __powerline() {
         fi
         PS1=""
         if [ $(whoami) = "root" ]; then
-          PS1+="$BG_RED|$RESET$FG_RED|ROOT|$RESET|$BG_RED|$RESET"
+          PS1+="$BG_RED|$RESET$FG_RED|ROOT|$RESET"
         fi
 
         PS1+="$FG_COLOR1$BOLD$FG_YELLOW$BOXNAME$RESET"
