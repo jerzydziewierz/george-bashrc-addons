@@ -5,8 +5,8 @@
 
 source secrets.sh
 
-# ..........................:
-echo "registry_login........: login to the docker registry"
+# .........................:
+echo "registry_login.......: login to the docker registry"
 function registry_login()
 {
   sudo docker login -u $REYMONTE_IMAGE_REGISTRY_USER --password $REYMONTE_IMAGE_REGISTRY_PASS $REYMONTE_IMAGE_REGISTRY_ADDRESS
@@ -22,7 +22,7 @@ function registry_list()
 }
 
 # ..........................:
-echo "docker_tag \$1.......: tag \$1 with the local registry name"
+echo "docker_tag \$1........: tag \$1 with the local registry name"
 function docker_tag()
 {
   docker tag $1 $REYMONTE_IMAGE_REGISTRY_ADDRESS/sources/$1
@@ -33,5 +33,10 @@ echo "dbr...................: docker build and run the Dockerfile"
 function dbr()
 {
   docker build .
-  docker run -it $(docker images --format "{{.ID}}" | head -1)
+  docker run -it $(docker images --format "{{.ID}} {{.CreatedAt}}" | sort -rk 2 | awk 'NR==1{print $1}')
+}
+
+function docker_last_image()
+{
+  echo $(docker images --format "{{.ID}} {{.CreatedAt}}" | sort -rk 2 | awk 'NR==1{print $1}')
 }
