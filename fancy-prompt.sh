@@ -17,10 +17,15 @@ __powerline() {
     readonly BG_BASE2="\\[$(tput setab 7)\\]"
     readonly BG_BASE3="\\[$(tput setab 15)\\]"
     readonly BG_BLUE="\\[$(tput setab 4)\\]"
+    readonly BG_DARKGREY1="\\[\\e[48;5;232m\\]"
+    readonly BG_DARKGREY2="\\[\\e[48;5;234m\\]"
+    readonly BG_DARKGREY3="\\[\\e[48;5;236m\\]"
+    readonly BG_DARKGREEN1="\\[\\e[48;5;022m\\]"
     readonly BG_COLOR1="\\[\\e[48;5;240m\\]"
     readonly BG_COLOR2="\\[\\e[48;5;238m\\]"
     readonly BG_COLOR3="\\[\\e[48;5;238m\\]"
-    readonly BG_COLOR4="\\[\\e[48;5;31m\\]"
+    #readonly BG_COLOR4="\\[\\e[48;5;31m\\]"
+    readonly BG_COLOR4=$BG_DARKGREEN1
     readonly BG_COLOR5="\\[\\e[48;5;31m\\]"
     readonly BG_COLOR6="\\[\\e[48;5;237m\\]"
     readonly BG_COLOR7="\\[\\e[48;5;237m\\]"
@@ -48,7 +53,8 @@ __powerline() {
     readonly FG_COLOR2="\\[\\e[38;5;240m\\]"
     readonly FG_COLOR3="\\[\\e[38;5;250m\\]"
     readonly FG_COLOR4="\\[\\e[38;5;238m\\]"
-    readonly FG_COLOR6="\\[\\e[38;5;31m\\]"
+    #readonly FG_COLOR6="\\[\\e[38;5;31m\\]"
+    readonly FG_COLOR6="\\[\\e[38;5;022m\\]"
     readonly FG_COLOR7="\\[\\e[38;5;250m\\]"
     readonly FG_COLOR8="\\[\\e[38;5;237m\\]"
     readonly FG_COLOR9="\\[\\e[38;5;161m\\]"
@@ -108,8 +114,8 @@ __powerline() {
         fi
 
         PS1+="$FG_COLOR1$BOLD$FG_YELLOW$BOXNAME$RESET"
-        PS1+="|"$CONDA_DEFAULT_ENV"|"
-        PS1+="$BG_COLOR5 \\w "
+        PS1+=${BG_DARKGREY1}$CONDA_DEFAULT_ENV""
+        PS1+="${BG_COLOR4}\\w"
         PS1+="$RESET${FG_COLOR6}"
         PS1+="$(__git_info)"
         PS1+="$BG_EXIT$RESET"
@@ -120,8 +126,8 @@ __powerline() {
 }
 
 if [ -n "${powerline_fonts_enabled}" ] ; then 
-    echo "powerline fonts enabled."
-    
+    # echo "powerline fonts enabled."
+    : # this is a no-op
 else
     readonly powerline_fonts_enabled=1
     __powerline
