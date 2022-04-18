@@ -30,9 +30,17 @@ open, edit, execute as needed
 ### STEP 2
 
 ```bash 
+cd ~
+mkdir -p git prog
 pushd ~/git
-git clone <<this>>` 
+git clone https://github.com/jerzydziewierz/george-bashrc-addons.git
+echo "pushd ~/git/george-bashrc-addons/"
+echo ". ~/git/george-bashrc-addons/george-bashrc-addons.sh" >> ~/.bashrc
+echo "popd"
+pushd ~/git/george-bashrc-addons/
+cp secrets.template.sh secrets.sh
 popd
+popd 
 ```
 
 ### STEP 3

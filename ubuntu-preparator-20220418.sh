@@ -119,6 +119,8 @@ gnome-www-browser https://github.com/obsidianmd/obsidian-releases/releases/lates
 
 
 # ============= Font awesome for terminal
+# see https://github.com/gabrielelana/awesome-terminal-fonts
+# alternate: https://github.com/ryanoasis/nerd-fonts
 # - in ~/prog
 git clone git@github.com:gabrielelana/awesome-terminal-fonts.git
 awesome-terminal-fonts/install.sh

@@ -103,8 +103,8 @@ __powerline() {
             local FG_EXIT="$FG_RED"
         fi
 
-        PS1="$FG_COLOR1"
-        PS1+=$CONDA_DEFAULT_ENV"|"
+        PS1="$FG_COLOR1$BOLD$YELLOW$BOXNAME$RESET"
+        PS1+="|"$CONDA_DEFAULT_ENV"|"
         PS1+="$BG_COLOR5 \\w "
         PS1+="$RESET${FG_COLOR6}"
         PS1+="$(__git_info)"
