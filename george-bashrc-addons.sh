@@ -6,6 +6,11 @@
 # source the secrets
 . secrets.sh
 
+function make_link()
+{
+echo -e -n "\e]8;;$1\a$2\e]8;;\a"
+}
+
 . george-bashrc-addons-screen.sh
 . george-bashrc-addons-cli.sh
 
@@ -31,15 +36,6 @@ function sb()
     . ~/.bashrc
 }
 
-
-function make_link()
-{
-echo -e -n "\e]8;;$1\a$2\e]8;;\a"
-}
-
-# private most often used links
-. george-bashrc-addons-links.sh
-
 echo "ubrc.................: update bashrc addons from git repo"
 function ubrc()
 {
@@ -48,3 +44,10 @@ function ubrc()
   popd
   sb
 }
+
+
+
+
+# private most often used links
+. george-bashrc-addons-links.sh
+
