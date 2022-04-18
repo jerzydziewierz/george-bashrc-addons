@@ -113,9 +113,12 @@ __powerline() {
           PS1+="${BG_RED}${FG_RED}|${RESET}${FG_RED}ROOT${BG_RED}|${RESET}"
         fi
 
+        # add box name
         PS1+="$FG_COLOR1$BOLD$FG_YELLOW$BOXNAME$RESET"
-        if [ -z $CONDA_DEFAULT_ENV ]
-          PS1+="|"${BG_DARKGREY1}$CONDA_DEFAULT_ENV"|"
+
+        # if conda env is set, add it. Otherwise, skip.
+        if [ ! -z "${CONDA_DEFAULT_ENV}" ]; then
+          PS1+=${BG_DARKGREY1}"|"${CONDA_DEFAULT_ENV}"|"${RESET}
         fi
         PS1+="${BG_COLOR4}\\w"
         PS1+="$RESET${FG_COLOR6}"
