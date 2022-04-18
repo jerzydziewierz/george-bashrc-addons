@@ -22,7 +22,7 @@ function registry_list()
 }
 
 # ..........................:
-echo "docker_tag what.......: tag `what` with the local registry name"
+echo "docker_tag \$1.......: tag \$1 with the local registry name"
 function docker_tag()
 {
   docker tag $1 $REYMONTE_IMAGE_REGISTRY_ADDRESS/sources/$1
