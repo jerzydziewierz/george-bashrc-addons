@@ -114,7 +114,9 @@ __powerline() {
         fi
 
         PS1+="$FG_COLOR1$BOLD$FG_YELLOW$BOXNAME$RESET"
-        PS1+=${BG_DARKGREY1}$CONDA_DEFAULT_ENV""
+        if [ -z $CONDA_DEFAULT_ENV ]
+          PS1+="|"${BG_DARKGREY1}$CONDA_DEFAULT_ENV"|"
+        fi
         PS1+="${BG_COLOR4}\\w"
         PS1+="$RESET${FG_COLOR6}"
         PS1+="$(__git_info)"
