@@ -17,6 +17,7 @@ echo -e -n "\e]8;;$1\a$2\e]8;;\a"
 # load reymonte commands
 . george-bashrc-addons-reymonte.sh
 . george-bashrc-addons-devel-tools.sh
+. george-bashrc-addons-docker.sh
 . fancy-prompt.sh
 
 
