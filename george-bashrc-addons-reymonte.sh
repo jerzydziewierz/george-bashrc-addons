@@ -9,6 +9,9 @@ function reymonte_sshfs()
 {
 fusermount -u ~/git/reymonte
 sshfs -o idmap=user paperspace@$REYMONTE_IP:/ ~/git/reymonte
+cd ~/git/reymonte/home/paperspace/git
+ls
+pwd
 }
 function reymonte_unmount()
 {

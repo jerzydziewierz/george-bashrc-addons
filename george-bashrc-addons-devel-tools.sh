@@ -102,9 +102,29 @@ echo "gap..................: git add, commit and push"
 function gap()
 {
 pushd $(git rev-parse --show-toplevel)
-git add .
-git commit -m 'auto'
-git push
+  if [ -z "$1" ]; then
+    echo "gap: using default message"
+    git add .
+    git commit -m 'autosave'
+    git fetch
+    git merge -m 'automerge'
+    git add .
+    git commit -m 'autosave'
+    git push origin
+    # git push grey-private
+    # git push public
+  else
+    echo "gap: using custom message"
+    git add .
+    git commit -m "$1"
+    git fetch
+    git merge -m 'automerge'
+    git add .
+    git commit -m "$1"
+    git push origin
+    # git push grey-private
+    # git push public
+  fi
 popd
 }
 #     .....................:

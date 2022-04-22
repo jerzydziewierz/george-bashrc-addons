@@ -46,6 +46,14 @@ function fix_zoxide()
 sudo chown a /home/mib07150/.local/share/zoxide/db.zo
 }
 
+#     .....................:
+echo "say..................: sudo apt install -y \$1"
+function say()
+{
+sudo apt install -y $1
+}
+
+
 
 
 echo "ctrl-R, ctrl-T.......: last command, file search"

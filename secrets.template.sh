@@ -3,7 +3,7 @@ export REYMONTE_IP=secret
 export PAPERSPACE_APIKEY=secret
 export PAPERSPACE_REYMONTE_MACHINENAME=secret
 export UZDROWICIEL_SFTP_ACCOUNTNAME=secret
-export BOXNAME="=set me in secrets.sh="
+export BOXNAME="\e[53m\e[4m|set me|\e[55m"
 
 
 export REYMONTE_IMAGE_REGISTRY_ADDRESS=secret

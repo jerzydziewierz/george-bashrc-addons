@@ -58,6 +58,9 @@ __powerline() {
     readonly FG_COLOR7="\\[\\e[38;5;250m\\]"
     readonly FG_COLOR8="\\[\\e[38;5;237m\\]"
     readonly FG_COLOR9="\\[\\e[38;5;161m\\]"
+    readonly FG_BROWN1="\\[\\e[38;5;1m\\]"
+    readonly FG_GRASS22="\\[\\e[38;5;22m\\]"
+    readonly FG_BROWN52="\\[\\e[38;5;52m\\]"
     readonly FG_CYAN="\\[$(tput setaf 6)\\]"
     readonly FG_GREEN="\\[$(tput setaf 2)\\]"
     readonly FG_MAGENTA="\\[$(tput setaf 5)\\]"
@@ -114,7 +117,7 @@ __powerline() {
         fi
 
         # add box name
-        PS1+="$FG_COLOR1$BOLD$FG_YELLOW$BOXNAME$RESET"
+        PS1+="${FG_COLOR1}${BOLD}${FG_GRASS22}${BOXNAME}${RESET}"
 
         # if conda env is set, add it. Otherwise, skip.
         if [ ! -z "${CONDA_DEFAULT_ENV}" ]; then
