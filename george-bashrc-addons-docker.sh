@@ -16,10 +16,24 @@ function registry_login()
 
 
 # ..........................:
-echo "registry_list........: list images stored in the registry"
+echo "registry_list.........: list images stored in the registry"
 function registry_list()
 {
   curl https://$REYMONTE_IMAGE_REGISTRY_USER:$REYMONTE_IMAGE_REGISTRY_PASS@$REYMONTE_IMAGE_REGISTRY_ADDRESS/v2/_catalog
+}
+
+echo "registry_cleanup.........: ask registry to perorm garbage collection"
+function registry_cleanup()
+{
+  # WARNING:
+  # only run this when you are sure that there is noone writing to the registry
+  # needs to be executed from sudo
+  #
+  # usage:
+  # go root and manually delete the manifests of interests
+  # there: /opt/docker/registry/data/docker/registry/v2/repositories/<repository>/<manifest>
+  # THEN run this:
+  docker exec -it gui_registry_1 bin/registry garbage-collect /etc/docker/registry/config.yml
 }
 
 # ..........................:
