@@ -107,7 +107,7 @@ pushd $(git rev-parse --show-toplevel)
     local msg="autosave"
   else
     echo "gap: " $1
-    local msg = "$1"
+    local msg="$1"
     fi
   git add .
   git commit -m "$msg"
