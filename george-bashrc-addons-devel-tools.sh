@@ -107,10 +107,10 @@ pushd $(git rev-parse --show-toplevel)
     local msg="autosave"
   else
     echo "gap: " $1
-    msg = "$1"
+    local msg = "$1"
     fi
   git add .
-  git commit -m $msg
+  git commit -m "$msg"
   git fetch
   git merge -m 'automerge'
   git add .
