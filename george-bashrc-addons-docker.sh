@@ -34,6 +34,7 @@ function registry_cleanup()
   # there: /opt/docker/registry/data/docker/registry/v2/repositories/<repository>/<manifest>
   # THEN run this:
   docker exec -it gui_registry_1 bin/registry garbage-collect /etc/docker/registry/config.yml
+  docker restart gui_registry_1
 }
 
 # ..........................:
