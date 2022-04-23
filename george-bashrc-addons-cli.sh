@@ -53,6 +53,13 @@ function say()
 sudo apt install -y $1
 }
 
+#     .....................:
+echo "mkdirp...............: mkdir -p $1 and cd $1"
+function mkdirp()
+{
+mkdir -p $1
+cd $1
+}
 
 
 
@@ -65,3 +72,5 @@ echo "ctrl-R, ctrl-T.......: last command, file search"
 # z "$@"
 #}
 
+
+}

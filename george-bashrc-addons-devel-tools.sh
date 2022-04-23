@@ -104,27 +104,18 @@ function gap()
 pushd $(git rev-parse --show-toplevel)
   if [ -z "$1" ]; then
     echo "gap: using default message"
-    git add .
-    git commit -m 'autosave'
-    git fetch
-    git merge -m 'automerge'
-    git add .
-    git commit -m 'autosave'
-    git push origin
-    # git push grey-private
-    # git push public
+    local msg="autosave"
   else
-    echo "gap: using custom message"
-    git add .
-    git commit -m "$1"
-    git fetch
-    git merge -m 'automerge'
-    git add .
-    git commit -m "$1"
-    git push origin
-    # git push grey-private
-    # git push public
-  fi
+    echo "gap: " $1
+    msg = "$1"
+    fi
+  git add .
+  git commit -m $msg
+  git fetch
+  git merge -m 'automerge'
+  git add .
+  git commit -m "post-auto-merge+$msg"
+  git push origin
 popd
 }
 #     .....................:
