@@ -27,12 +27,14 @@ ssh -X paperspace@$REYMONTE_IP
 # uses secret PAPERSPACE_REYMONTE_MACHINENAME
 function reymonte_start()
 {
-curl -X POST -v "https://api.paperspace.io/machines/$PAPERSPACE_REYMONTE_MACHINENAME/start" -H "X-API-Key: $PAPERSPACE_APIKEY"
+  # options: -v
+curl -X POST "https://api.paperspace.io/machines/$PAPERSPACE_REYMONTE_MACHINENAME/start" -H "X-API-Key: $PAPERSPACE_APIKEY"
 }
 # echo "reymonte_stop.....: stop reymonte"
 function reymonte_stop()
 {
-curl -X POST -v "https://api.paperspace.io/machines/$PAPERSPACE_REYMONTE_MACHINENAME/stop" -H "X-API-Key: $PAPERSPACE_APIKEY"
+  # options: -v
+curl -X POST "https://api.paperspace.io/machines/$PAPERSPACE_REYMONTE_MACHINENAME/stop" -H "X-API-Key: $PAPERSPACE_APIKEY"
 }  
 
 
