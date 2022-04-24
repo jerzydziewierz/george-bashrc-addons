@@ -62,15 +62,10 @@ cd $1
 }
 
 
-
 echo "ctrl-R, ctrl-T.......: last command, file search"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 
 # note: it may be risky to shadow the cd command
 #function cd() {
 # z "$@"
 #}
-
-
-}
