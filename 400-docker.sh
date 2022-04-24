@@ -68,7 +68,7 @@ function docker_tag()
 echo "docker_dangerous_cleanup.........: !!! WARNING !!!: remove all non-running things from docker system"
 function docker_dangerous_cleanup()
 {
-  docker container prune -a
+  docker container prune
   docker image prune -a
   docker system prune -a
   registry_cleanup
