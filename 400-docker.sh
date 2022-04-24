@@ -65,9 +65,10 @@ function docker_tag()
   docker tag $(docker_last_image) $REYMONTE_IMAGE_REGISTRY_ADDRESS/sources/$1
 }
 
-function docker_cleanup()
+function docker_dangerous_cleanup()
 {
-  docker container prune
-  docker image prune
+  docker container prune -a
+  docker image prune -a
+  docker system prune -a
   registry_cleanup
 }
