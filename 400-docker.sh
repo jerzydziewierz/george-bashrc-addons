@@ -22,7 +22,7 @@ function registry_list()
   curl https://$REYMONTE_IMAGE_REGISTRY_USER:$REYMONTE_IMAGE_REGISTRY_PASS@$REYMONTE_IMAGE_REGISTRY_ADDRESS/v2/_catalog
 }
 
-echo "registry_cleanup.........: ask registry to perorm garbage collection"
+echo "registry_cleanup.........: ask registry to perform garbage collection"
 function registry_cleanup()
 {
   # WARNING:
@@ -64,7 +64,8 @@ function docker_tag()
 {
   docker tag $(docker_last_image) $REYMONTE_IMAGE_REGISTRY_ADDRESS/sources/$1
 }
-
+# .........................:
+echo "docker_dangerous_cleanup.........: !!! WARNING !!!: remove all non-running things from docker system"
 function docker_dangerous_cleanup()
 {
   docker container prune -a
