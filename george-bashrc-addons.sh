@@ -6,49 +6,21 @@
 # source the secrets
 . secrets.sh
 
-function make_link()
-{
-echo -e -n "\e]8;;$1\a$2\e]8;;\a"
-}
 
-. george-bashrc-addons-screen.sh
-. george-bashrc-addons-cli.sh
+
+. 050-screen.sh
+. 100-cli.sh
 
 # load reymonte commands
-. george-bashrc-addons-reymonte.sh
-. george-bashrc-addons-devel-tools.sh
-. george-bashrc-addons-docker.sh
-. fancy-prompt.sh
-
-
-#    .....................:
-# echo "gping.............: gping"
-function gping()
-{ # start gping in screen, but also do not disconnect -- stay connected
-    # gstatic.com www.interieur.gouv.fr  
-    screen -S gping -m bash -c "~/prog/gping/gping richards.planeti.co.uk docker.planeti.co.uk"
-}
-
-
-#     .....................:
-# echo "rc...................: reload .bashrc"
-function rc()
-{
-    . ~/.bashrc
-}
-
-echo "uprc.................: update bashrc addons from git repo"
-function uprc()
-{
-  pushd ~/git/george-bashrc-addons/
-  git pull
-  popd
-  . ~/.bashrc
-}
-
+. 200-reymonte.sh
+. 300-devel-tools.sh
+. 400-docker.sh
+. 800-fancy-prompt.sh
+. 900-misc.sh
 
 
 
 # private most often used links
-. george-bashrc-addons-links.sh
+. 910-links.sh
 
+conda deactivate
