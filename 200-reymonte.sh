@@ -46,7 +46,8 @@ function uzdrowiciel_sshfs()
 cd ~
 mkdir -p ~/git/uzdrowiciel
 fusermount -u ~/git/uzdrowiciel
-sshfs -o idmap=user $UZDROWICIEL_SFTP_ACCOUNTNAME:/ ~/git/uzdrowiciel
+sshfs -p 22222 -o idmap=user $UZDROWICIEL_SFTP_ACCOUNTNAME:/ ~/git/uzdrowiciel
+pushd ~/git/uzdrowiciel
 }
 
 
@@ -58,6 +59,7 @@ function raspi_sshfs()
 fusermount -u ~/git/raspi
 mkdir -p ~/git/raspi
 sshfs -o idmap=user mib07150@$RASPI_IP:/ ~/git/raspi
+pushd ~/git/raspi
 }
 
 #     .....................:
@@ -68,3 +70,11 @@ screen -t raspi bash -c 'ssh -X $RASPI_IP'
 }
 
 
+function any_sshfs()
+{
+cd ~
+mkdir -p ~/git/datacrunch
+fusermount -u ~/git/datacrunch
+sshfs -o idmap=user root@135.18.64.158:/ ~/git/datacrunch
+cd ~/git/datacrunch/
+}

@@ -215,3 +215,15 @@ echo "ClientAliveCountMax 20" >> /etc/ssh/sshd_config
 
 
 
+# == create SSH key
+cd ~/.ssh
+ssh-keygen -t ed25519
+cat ~/.ssh/id_ed25519.pub
+eval "$(ssh-agent -s)"
+ssh-add
+
+
+# === run jupyter notebook via ssh
+# screen -S jupyter
+# jupyter notebook --allow-root --no-browser --port 1234
+# ssh -X -L 1234:localhost:1234 root@host

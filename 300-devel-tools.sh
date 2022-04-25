@@ -118,10 +118,24 @@ pushd $(git rev-parse --show-toplevel)
   git push origin
 popd
 }
+echo "gmd..................: git merge devel branch"
+function gmd()
+{
+  local currentFolder=$(pwd)
+  cdr
+  gap
+  local currentBranch=$(git symbolic-ref --short HEAD)
+  git checkout devel
+  git pull
+  pushd src/engine/tools
+  git pull
+  popd
+  git checkout $currentBranch
+  git merge devel
+  cd $currentFolder
+}
+
 #     .....................:
 echo "dfh..................: show device free space"
 alias dfh="df -h | grep -v 100% | grep -v tmpfs | grep -v udev"
-
-
-
 

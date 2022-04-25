@@ -9,3 +9,9 @@ export BOXNAME="\e[53m\e[4m|set me|\e[55m"
 export REYMONTE_IMAGE_REGISTRY_ADDRESS=secret
 export REYMONTE_IMAGE_REGISTRY_USER=secret
 export REYMONTE_IMAGE_REGISTRY_PASS=secret
+
+## little list of benchmarks of cloud CPUs
+# 7zip b
+# AMD Ryzen 9 3900X 12-Core Processor (24 cores booked) :                   2229   3614  80643
+# AMD EPYC 7642 48-Core Processor, (22 cores booked):                       1807   3646  65944
+# Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz (406F1)  (4 cores booked) :      377   2687  10084
