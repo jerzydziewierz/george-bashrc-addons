@@ -15,14 +15,14 @@ function registry_login()
 }
 
 
-# ..........................:
-echo "registry_list.........: list images stored in the registry"
+# .........................:
+echo "registry_list........: list images stored in the registry"
 function registry_list()
 {
   curl https://$REYMONTE_IMAGE_REGISTRY_USER:$REYMONTE_IMAGE_REGISTRY_PASS@$REYMONTE_IMAGE_REGISTRY_ADDRESS/v2/_catalog
 }
-
-echo "registry_cleanup.........: ask registry to perform garbage collection"
+# .........................:
+echo "registry_cleanup.....: ask registry to perform garbage collection"
 function registry_cleanup()
 {
   # WARNING:
@@ -39,7 +39,7 @@ function registry_cleanup()
   docker restart gui_registry_1
 }
 
-# ..........................:
+
 
 # .........................:
 echo "dbr..................: docker build and run the Dockerfile"

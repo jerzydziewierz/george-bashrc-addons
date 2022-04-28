@@ -41,25 +41,29 @@ function pycharm()
 
 
 #     .....................:
-echo "mambao...............: mamba install"
+# echo "mambao...............: mamba install"
+export GRTools=$GRTools"mambao "
 alias mambao='mamba install --use-index-cache -y'
 
 #     .....................:
-echo "lsopo................: list open ports"
+# echo "lsopo................: list open ports"
+export GRTools=$GRTools"lsopo "
 function lsopo()
 {
 sudo lsof -i -P -n | grep LISTEN
 }
 
 #     .....................:
-echo "cdr..................: go to the git repo root folder"
+# echo "cdr..................: go to the git repo root folder"
+export GRTools=$GRTools"cdr "
 function cdr()
 {
 z $(git rev-parse --show-toplevel)
 }
 
 #     .....................:
-echo "kilidar..............: kill doTDLidar, if it exists"
+# echo "kilidar..............: kill doTDLidar, if it exists"
+export GRTools=$GRTools"kilidar "
 function kilidar()
 {
   sudo lsof -i -P -n | grep LISTEN | grep doTDLidar | while read c1 c2 c3; do sudo kill $c2; echo "got one"; done

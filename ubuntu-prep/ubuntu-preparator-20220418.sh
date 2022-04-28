@@ -57,6 +57,11 @@ pushd terminator
 python3 -m pip install .
 popd
 
+# install other terminal emulators to check
+
+apt install kitty
+apt install tilix
+
 
 ## to install:
 # [ ] xnview, 

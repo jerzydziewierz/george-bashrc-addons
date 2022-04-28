@@ -19,7 +19,7 @@
 . 900-misc.sh
 
 
-
+echo $GRTools
 # private most often used links
 . 910-links.sh
 

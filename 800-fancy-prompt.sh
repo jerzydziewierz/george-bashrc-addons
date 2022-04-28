@@ -261,3 +261,7 @@ fi
 #     F0D.                                
 #     F0E.                                
 #     F0F.                                
+
+# Page 1f700..
+#   🟢🟡🟠 🟡 🟢 🟣 🟤 🟥 🟦 🟧 🟨 🟩 🟪 🟫
+#   ❗️❌✅➡️ ⬆️ ❓ -- these are rendered as colorful on some systems
