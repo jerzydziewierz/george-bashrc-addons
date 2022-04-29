@@ -3,7 +3,8 @@
 #     .....................:
 # uses secret $RASPI_IP
 source secrets.sh
-echo "raspi_math...........: open $RASPI_IP"
+# echo "raspi_math...........: open $RASPI_IP"
+export GRTools=$GRTools"raspi_math "
 function raspi_math()
 {
 screen -dmS raspi bash -c "ssh -X $RASPI_IP mathematica"
@@ -23,8 +24,8 @@ screen -dmS raspi bash -c "ssh -X $RASPI_IP mathematica"
 
 
 #     .....................:
-echo "clion, pycharm.......: start CLion, pycharm"
-# echo "pycharm...........: start pycharm"
+# echo "clion, pycharm.......: start CLion, pycharm"
+export GRTools=$GRTools"clion pycharm "
 function clion()
 {
     screen -S clion -d -m bash -i -c "conda deactivate && conda deactivate && ~/prog/clion-2021.3.3/bin/clion.sh" 
@@ -102,7 +103,8 @@ watch -d -n 30 bash -i -c __notesync_internal
 }
 
 #     .....................:
-echo "gap..................: git add, commit and push"
+# echo "gap..................: git add, commit and push"
+export GRTools=$GRTools"gap "
 function gap()
 {
 pushd $(git rev-parse --show-toplevel)
@@ -122,7 +124,9 @@ pushd $(git rev-parse --show-toplevel)
   git push origin
 popd
 }
-echo "gmd..................: git merge devel branch"
+
+# echo "gmd..................: git merge devel branch"
+export GRTools=$GRTools"gmd "
 function gmd()
 {
   local currentFolder=$(pwd)
@@ -140,6 +144,7 @@ function gmd()
 }
 
 #     .....................:
-echo "dfh..................: show device free space"
+# echo "dfh..................: show device free space"
+export GRTools=$GRTools"dfh "
 alias dfh="df -h | grep -v 100% | grep -v tmpfs | grep -v udev"
 

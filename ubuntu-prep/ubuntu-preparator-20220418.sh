@@ -13,6 +13,8 @@ apt install -y gcc-11 g++-11
 
 # desktop tools
 apt install -y xclock kate krusader qalculate vlc shutter fsearch
+apt install -y ffmpeg gimp inkscape gparted
+apt install -y gnome-tweak-tool gnome-shell-extensions
 # fsearch filesystem indexing and search
 
 

@@ -6,7 +6,8 @@
 source secrets.sh
 
 # .........................:
-echo "registry_login.......: login to the docker registry"
+# echo "registry_login.......: login to the docker registry"
+export GRTools=$GRTools"registry+ _login _list _cleanup "
 function registry_login()
 {
   sudo docker login -u $REYMONTE_IMAGE_REGISTRY_USER --password $REYMONTE_IMAGE_REGISTRY_PASS $REYMONTE_IMAGE_REGISTRY_ADDRESS
@@ -16,13 +17,13 @@ function registry_login()
 
 
 # .........................:
-echo "registry_list........: list images stored in the registry"
+# echo "registry_list........: list images stored in the registry"
 function registry_list()
 {
   curl https://$REYMONTE_IMAGE_REGISTRY_USER:$REYMONTE_IMAGE_REGISTRY_PASS@$REYMONTE_IMAGE_REGISTRY_ADDRESS/v2/_catalog
 }
 # .........................:
-echo "registry_cleanup.....: ask registry to perform garbage collection"
+# echo "registry_cleanup.....: ask registry to perform garbage collection"
 function registry_cleanup()
 {
   # WARNING:
@@ -40,9 +41,9 @@ function registry_cleanup()
 }
 
 
-
 # .........................:
-echo "dbr..................: docker build and run the Dockerfile"
+# echo "dbr..................: docker build and run the Dockerfile"
+export GRTools=$GRTools"dbr "
 function dbr()
 {
   # docker build .
@@ -50,7 +51,7 @@ function dbr()
   # docker run -it $(docker images --format "{{.ID}} {{.CreatedAt}}" | sort -rk 2 | awk 'NR==1{print $1}')
   docker up
 }
-
+export GRTools=$GRTools"docker+ _last_image "
 function docker_last_image()
 {
   echo $(docker images --format "{{.ID}} {{.CreatedAt}}" | sort -rk 2 | awk 'NR==1{print $1}')
@@ -59,13 +60,14 @@ function docker_last_image()
 # how to get docker container to serve an X11 app:
 # https://gursimar27.medium.com/run-gui-applications-in-a-docker-container-ca625bad4638
 
-echo "docker_tag \$1........: tag \$1 with the local registry name"
+# echo "docker_tag \$1........: tag \$1 with the local registry name"
+export GRTools=$GRTools" _tag "
 function docker_tag()
 {
   docker tag $(docker_last_image) $REYMONTE_IMAGE_REGISTRY_ADDRESS/sources/$1
 }
 # .........................:
-echo "docker_dangerous_cleanup.........: !!! WARNING !!!: remove all non-running things from docker system"
+# echo "docker_dangerous_cleanup.........: !!! WARNING !!!: remove all non-running things from docker system"
 function docker_dangerous_cleanup()
 {
   docker container prune

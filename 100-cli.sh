@@ -40,21 +40,23 @@ function zi() {
 }
 
 #     .....................:
-echo "fix_zoxide...........:"
+# echo "fix_zoxide...........:"
 function fix_zoxide()
 {
 sudo chown a /home/mib07150/.local/share/zoxide/db.zo
 }
 
 #     .....................:
-echo "say..................: sudo apt install -y \$1"
+# echo "say..................: sudo apt install -y \$1"
+export GRTools=$GRTools"say "
 function say()
 {
 sudo apt install -y $1
 }
 
 #     .....................:
-echo "mkdirp...............: mkdir -p $1 and cd $1"
+# echo "mkdirp...............: mkdir -p $1 and cd $1"
+export GRTools=$GRTools"mkdirp "
 function mkdirp()
 {
 mkdir -p $1
@@ -62,7 +64,8 @@ cd $1
 }
 
 
-echo "ctrl-R, ctrl-T.......: last command, file search"
+# echo "ctrl-R, ctrl-T.......: last command, file search"
+export GRTools=$GRTools"ctrl-R ctrl-T "
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # note: it may be risky to shadow the cd command

@@ -2,9 +2,10 @@
 
 #     .....................:
 # uses secret REYMONTE_IP
-echo "reymonte_+ uzdrowiciel_+ ops :"
-echo "ssh, sshfs, unmount..:  "
-echo "start, stop .........:  "
+# echo "reymonte_+ uzdrowiciel_+ ops :"
+# echo "ssh, sshfs, unmount..:  "
+# echo "start, stop .........:  "
+export GRTools=$GRTools"raspi+ uzdrowiciel+ reymonte+ _ssh _sshfs _start _stop _unmount "
 function reymonte_sshfs()
 {
 fusermount -u ~/git/reymonte
@@ -60,6 +61,7 @@ fusermount -u ~/git/raspi
 mkdir -p ~/git/raspi
 sshfs -o idmap=user mib07150@$RASPI_IP:/ ~/git/raspi
 pushd ~/git/raspi
+echo $(pwd)
 }
 
 #     .....................:
@@ -77,4 +79,14 @@ mkdir -p ~/git/datacrunch
 fusermount -u ~/git/datacrunch
 sshfs -o idmap=user root@135.18.64.158:/ ~/git/datacrunch
 cd ~/git/datacrunch/
+}
+
+#     .....................:
+ echo "kh..................: open krusader **here**"
+function kh()
+{
+  local localcmd="krusader $(pwd)"
+  local localcmd2="bash -c '$localcmd'"
+  screen -S "krusader-here" -dm bash -c "$localcmd"
+  sl
 }
