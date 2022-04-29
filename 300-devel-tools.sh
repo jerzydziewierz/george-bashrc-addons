@@ -143,6 +143,12 @@ function gmd()
   cd $currentFolder
 }
 
+# echo "pt..................: push to tools. Dev helper"
+function pt()
+{
+  pushd src/engine/tools
+  git status
+}
 #     .....................:
 # echo "dfh..................: show device free space"
 export GRTools=$GRTools"dfh "
