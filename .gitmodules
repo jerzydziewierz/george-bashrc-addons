@@ -1,0 +1,3 @@
+[submodule "ml-in-a-box"]
+path = ubuntu-prep/ml-in-a-box-2/
+url = git@github.com:jerzydziewierz/ml-in-a-box.git
