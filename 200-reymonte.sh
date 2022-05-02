@@ -71,15 +71,24 @@ function raspi_ssh()
 screen -t raspi bash -c 'ssh -X $RASPI_IP'
 }
 
-
+export DATACRUNCH_IP=root@65.108.33.76
+function any_ssh()
+{
+ssh -X $DATACRUNCH_IP
+}
 function any_sshfs()
 {
 cd ~
 mkdir -p ~/git/datacrunch
 fusermount -u ~/git/datacrunch
-sshfs -o idmap=user root@135.18.64.158:/ ~/git/datacrunch
-cd ~/git/datacrunch/
+sshfs -o idmap=user $DATACRUNCH_IP:/ ~/git/datacrunch
+pushd ~/git/datacrunch/
 }
+
+# === run jupyter notebook via ssh
+# screen -S jupyter
+# jupyter notebook --allow-root --no-browser --port 11234
+# ssh -X -L 11234:localhost:11234 root@host
 
 #     .....................:
  echo "kh..................: open krusader **here**"
