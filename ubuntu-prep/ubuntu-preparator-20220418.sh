@@ -229,6 +229,8 @@ cat ~/.ssh/id_ed25519.pub
 eval "$(ssh-agent -s)"
 ssh-add
 
+# this repo:
+# git@github.com:jerzydziewierz/george-bashrc-addons.git
 
 # === run jupyter notebook via ssh
 # screen -S jupyter
