@@ -15,4 +15,4 @@ export REYMONTE_IMAGE_REGISTRY_PASS=secret
 # AMD Ryzen 9 3900X 12-Core Processor (24 cores booked) :                   2229   3614  80643
 # AMD EPYC 7642 48-Core Processor, (22 cores booked):                       1807   3646  65944
 # Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz (406F1)  (4 cores booked) :      377   2687  10084
-# Intel(R) Core(TM) i7-8665U CPU @ 1.90GHz (806EC) (8 cores) 		     707   1981  13822
+# Intel(R) Core(TM) i7-8665U CPU @ 1.90GHz (806EC) (8 cores) 		             707   1981  13822

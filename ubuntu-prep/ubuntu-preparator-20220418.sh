@@ -231,6 +231,8 @@ ssh-add
 
 # this repo:
 # git@github.com:jerzydziewierz/george-bashrc-addons.git
+# add to ~/.bashrc:
+#
 
 # === run jupyter notebook via ssh
 # screen -S jupyter
