@@ -4,7 +4,18 @@ cd ~
 mkdir -p prog git prog/git 
 pushd prog
 apt update  
-apt upgrade -y -force-confnew=yes
+
+# for non-interactive upgrades, the "new configuration file" is sometimes problematic.
+sudo bash
+export DEBIAN_FRONTEND=noninteractive
+export DEBIAN_PRIORITY=critical
+sudo -E apt-get -qy update
+sudo -E apt-get -qy -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
+sudo -E apt-get -qy autoremove
+sudo -E apt-get -qy autoclean
+
+
+
 # CLI-only tools
 apt install -y sshfs git make screen p7zip-full curl wget coreutils sed build-essential python3 python3-pip gcc-10 g++-10 sysstat
 # if needed: gcc-11
