@@ -51,6 +51,7 @@ echo 'eval $(zoxide init bash)' >> ~/.bashrc
 cd ~
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
+source ~/.bashrc  # bash
 
 
 
