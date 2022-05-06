@@ -4,7 +4,7 @@ cd ~
 mkdir -p prog git prog/git 
 pushd prog
 apt update  
-apt upgrade -y -force-confnew
+apt upgrade -y -force-confnew=yes
 # CLI-only tools
 apt install -y sshfs git make screen p7zip-full curl wget coreutils sed build-essential python3 python3-pip gcc-10 g++-10 sysstat
 # if needed: gcc-11
