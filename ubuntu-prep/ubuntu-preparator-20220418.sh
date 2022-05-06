@@ -1,5 +1,23 @@
 # this prepares a fresh ubuntu to work for me
 DEBIAN_FRONTEND=noninteractive
+
+# == create SSH key
+cd ~/.ssh
+yes "" | ssh-keygen -t ed25519
+cat ~/.ssh/id_ed25519.pub
+eval "$(ssh-agent -s)"
+ssh-add
+
+# == decrease keepalive interval to make the ssh connection more stable
+# see https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/
+# on the client
+echo "Host *" >> ~/.ssh/config 
+echo "    ServerAliveInterval 30" >> ~/.ssh/config
+echo "    ServerAliveCountMax 20" >> ~/.ssh/config 
+# on the host
+echo "ClientAliveInterval 30" >> /etc/ssh/sshd_config
+echo "ClientAliveCountMax 20" >> /etc/ssh/sshd_config
+
 cd ~
 mkdir -p prog git prog/git 
 pushd prog
@@ -221,25 +239,10 @@ swapon /swapfile
 # verify
 cat /proc/swaps
 
-# == decrease keepalive interval to make the ssh connection more stable
-# see https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/
-# on the client
-echo "Host *" >> ~/.ssh/config 
-echo "    ServerAliveInterval 30" >> ~/.ssh/config
-echo "    ServerAliveCountMax 20" >> ~/.ssh/config 
-# on the host
-echo "ClientAliveInterval 30" >> /etc/ssh/sshd_config
-echo "ClientAliveCountMax 20" >> /etc/ssh/sshd_config
 
 
 
 
-# == create SSH key
-cd ~/.ssh
-ssh-keygen -t ed25519
-cat ~/.ssh/id_ed25519.pub
-eval "$(ssh-agent -s)"
-ssh-add
 
 # this repo:
 # git@github.com:jerzydziewierz/george-bashrc-addons.git
