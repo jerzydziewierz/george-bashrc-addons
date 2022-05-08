@@ -253,3 +253,19 @@ cat /proc/swaps
 # screen -S jupyter
 # jupyter notebook --allow-root --no-browser --port 1234
 # ssh -X -L 1234:localhost:1234 root@host
+
+# internet general speed test with OOKLA
+curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash
+sudo apt-get install speedtest
+speedtest
+
+# point to point lag test with lagscope
+pushd ~/git
+git clone https://github.com/microsoft/lagscope.git
+pushd lagscope
+./do-cmake.sh build
+sudo ./do-cmake.sh install
+popd # lagscope
+popd # git
+
+
