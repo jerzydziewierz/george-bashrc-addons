@@ -25,6 +25,9 @@ if [[ ! -f ~/.ssh/id_ed25519.pub ]];
     echo "ssh key already exists"
 fi
 
+
+
+
 # allow github as known
 if ! grep github.com ~/.ssh/known_hosts > /dev/null
 then
@@ -70,37 +73,57 @@ echo 'eval $(zoxide init bash)' >> ~/.bashrc
 # apt install fzf
 # install fzf with git :
 cd ~
+
 # !! On the first run, asks for github key
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --all
-source ~/.bashrc  # bash
+if [[ ! -d ~/.fzf ]];
+  then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --all
+    source ~/.bashrc  # bash
+  else
+    echo "fzf already installed"
+fi
+
 
 
 # install george's bashrc addons
-cd ~/git
-git clone git@github.com:jerzydziewierz/george-bashrc-addons.git
-pushd george-bashrc-addons
-cp secrets.template.sh secrets.sh
-popd
-echo 'pushd ~/git/george-bashrc-addons' >> ~/.bashrc
-echo 'george-bashrc-addons.sh' >> ~/.bashrc
-echo 'popd' >> ~/.bashrc
-source ~/.bashrc
+if [[ ! -d ~/git/george-bashrc-addons ]];
+  then
+    cd ~/git
+    git clone git@github.com:jerzydziewierz/george-bashrc-addons.git
+    pushd george-bashrc-addons
+    cp secrets.template.sh secrets.sh
+    popd
+    echo 'pushd ~/git/george-bashrc-addons' >> ~/.bashrc
+    echo 'george-bashrc-addons.sh' >> ~/.bashrc
+    echo 'popd' >> ~/.bashrc
+    source ~/.bashrc
+    echo "george's bashrc addons installed"
+  else
+    echo "george's bashrc addons already installed"
+fi
 
 # internet general speed test with OOKLA
 curl -s https://install.speedtest.net/app/cli/install.deb.sh | sudo bash
 sudo apt-get install speedtest
-speedtest
+yes "YES" | speedtest
 
 # point to point lag test with lagscope
-pushd ~/git
-git clone https://github.com/microsoft/lagscope.git
-pushd lagscope
-./do-cmake.sh build
-sudo ./do-cmake.sh install
-popd # lagscope
-popd # git
+if [[ ! -d ~/git/lagscope ]];
+  then
+  pushd ~/git
+  git clone https://github.com/microsoft/lagscope.git
+  pushd lagscope
+  ./do-cmake.sh build
+  sudo ./do-cmake.sh install
+  popd # lagscope
+  popd # git
+  echo "lagscope installed"
+else
+  echo "lagscope already installed"
+fi
 
 
 
-snap install clion
+
+snap install clion --classic
