@@ -71,7 +71,6 @@ function raspi_ssh()
 screen -t raspi bash -c 'ssh -X $RASPI_IP'
 }
 
-export DATACRUNCH_IP=mib07150@65.108.33.102
 function any_ssh()
 {
 ssh -X $DATACRUNCH_IP

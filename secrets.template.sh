@@ -20,4 +20,5 @@ export REYMONTE_IMAGE_REGISTRY_PASS=secret
 # ???????           | AMD EPYC 7642 48-Core Processor,                  | 22C |     1807 |      3646 | 65944
 # Paperspace C9     | Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz (406F1) | 24C |     2128 |      2025 | 43004 | 0.90 | 20.7
 # Paperspace C9     | Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz         | 24C |     2152 |      2023 | 43421 | 0.90 | 20.7
-# Datacrunch CPU32V | AMD EPYC-Rome Processor (830F10)                  | 32C |     2839 |      3443 | 97603 | 0.80 |  8.2
+# Datacrunch CPU32V | AMD EPYC-Rome Processor (830F10)                  | 32C |     2839 |      3443 | 97603 | 0.80 |  8.20
+# Datacrunch CPU16V | AMD EPYC-Rome Processor (830F10)                  | 16C |     1336 |      3875 | 51866 | 0.40 |  7.71
