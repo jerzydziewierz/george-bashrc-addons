@@ -1,10 +1,39 @@
 # this prepares a fresh ubuntu to work for me
 DEBIAN_FRONTEND=noninteractive
+
+# == create SSH key
+cd ~/.ssh
+yes "" | ssh-keygen -t ed25519
+cat ~/.ssh/id_ed25519.pub
+eval "$(ssh-agent -s)"
+ssh-add
+
+# == decrease keepalive interval to make the ssh connection more stable
+# see https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/
+# on the client
+echo "Host *" >> ~/.ssh/config 
+echo "    ServerAliveInterval 30" >> ~/.ssh/config
+echo "    ServerAliveCountMax 20" >> ~/.ssh/config 
+# on the host
+echo "ClientAliveInterval 30" >> /etc/ssh/sshd_config
+echo "ClientAliveCountMax 20" >> /etc/ssh/sshd_config
+
 cd ~
 mkdir -p prog git prog/git 
 pushd prog
 apt update  
-apt upgrade -y -force-confnew
+
+# for non-interactive upgrades, the "new configuration file" is sometimes problematic.
+sudo bash
+export DEBIAN_FRONTEND=noninteractive
+export DEBIAN_PRIORITY=critical
+sudo -E apt-get -qy update
+sudo -E apt-get -qy -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
+sudo -E apt-get -qy autoremove
+sudo -E apt-get -qy autoclean
+
+
+
 # CLI-only tools
 apt install -y sshfs git make screen p7zip-full curl wget coreutils sed build-essential python3 python3-pip gcc-10 g++-10 sysstat
 # if needed: gcc-11
@@ -40,6 +69,7 @@ echo 'eval $(zoxide init bash)' >> ~/.bashrc
 cd ~
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
+source ~/.bashrc  # bash
 
 
 
@@ -209,25 +239,10 @@ swapon /swapfile
 # verify
 cat /proc/swaps
 
-# == decrease keepalive interval to make the ssh connection more stable
-# see https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/
-# on the client
-echo "Host *" >> ~/.ssh/config 
-echo "    ServerAliveInterval 30" >> ~/.ssh/config
-echo "    ServerAliveCountMax 20" >> ~/.ssh/config 
-# on the host
-echo "ClientAliveInterval 30" >> /etc/ssh/sshd_config
-echo "ClientAliveCountMax 20" >> /etc/ssh/sshd_config
 
 
 
 
-# == create SSH key
-cd ~/.ssh
-ssh-keygen -t ed25519
-cat ~/.ssh/id_ed25519.pub
-eval "$(ssh-agent -s)"
-ssh-add
 
 # this repo:
 # git@github.com:jerzydziewierz/george-bashrc-addons.git
