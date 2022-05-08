@@ -26,19 +26,19 @@ screen -dmS raspi bash -c "ssh -X $RASPI_IP mathematica"
 #     .....................:
 # echo "clion, pycharm.......: start CLion, pycharm"
 export GRTools=$GRTools"clion pycharm "
-function clion()
-{
-    screen -S clion -d -m bash -i -c "conda deactivate && conda deactivate && ~/prog/clion-2021.3.3/bin/clion.sh" 
-    echo "started clion in screen. The screen sessions are now:"
-    sl
-}
+# function clion()
+# {
+#    screen -S clion -d -m bash -i -c "conda deactivate && conda deactivate && ~/prog/clion-2021.3.3/bin/clion.sh" 
+3    echo "started clion in screen. The screen sessions are now:"
+#    sl
+# }
 
-function pycharm()
-{
-    screen -S pycharm  -d -m bash -c "pycharm-professional" 
-    echo "started pycharm in screen. The screen sessions are now:"
-    sl
-}
+# function pycharm()
+# {
+#     screen -S pycharm  -d -m bash -c "pycharm-professional" 
+#    echo "started pycharm in screen. The screen sessions are now:"
+#    sl
+# }
 
 
 #     .....................:
