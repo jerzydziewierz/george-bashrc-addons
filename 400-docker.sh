@@ -66,11 +66,20 @@ function docker_tag()
 {
   docker tag $(docker_last_image) $REYMONTE_IMAGE_REGISTRY_ADDRESS/sources/$1
 }
+
+function docker_cleanup()
+{
+# this clears the builder cache, forces full rebuilds on next docker builder run
+# https://docs.docker.com/engine/reference/commandline/builder_prune/
+docker builder prune -f --all
+}
+
 # .........................:
 # echo "docker_dangerous_cleanup.........: !!! WARNING !!!: remove all non-running things from docker system"
 function docker_dangerous_cleanup()
 {
   docker container prune
+  docker builder prune --all
   docker image prune -a
   docker system prune -a
   registry_cleanup

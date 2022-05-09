@@ -144,7 +144,7 @@ function gmd()
 }
 
 # echo "pt..................: push to tools. Dev helper"
-function pt()
+function cdt()
 {
   pushd src/engine/tools
   git status
