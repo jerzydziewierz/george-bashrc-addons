@@ -102,3 +102,8 @@ function kh()
   screen -S "krusader-here" -dm bash -c "$localcmd"
   sl
 }
+
+function random_port()
+{
+  echo $(shuf -i 2000-65000 -n 1)
+}
