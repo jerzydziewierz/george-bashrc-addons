@@ -12,4 +12,10 @@ alias sl="screen -list"
 alias sx="screen -x"
 alias ss="screen -S"
 
+function fix_screen()
+{
+  sudo mkdir -p /run/screen
+  sudo chown mib07150 /run/screen
+  sudo chmod 777 /run/screen
+}
 

@@ -73,14 +73,18 @@ screen -t raspi bash -c 'ssh -X $RASPI_IP'
 
 function any_ssh()
 {
-ssh -X $DATACRUNCH_IP
+ssh -X ${DATACRUNCH_SSH}
+}
+function any_cleanup_key()
+{
+  ssh-keygen -f "/home/mib07150/.ssh/known_hosts" -R "${DATACRUNCH_IP}"
 }
 function any_sshfs()
 {
 cd ~
 mkdir -p ~/git/datacrunch
 fusermount -u ~/git/datacrunch
-sshfs -o idmap=user $DATACRUNCH_IP:/ ~/git/datacrunch
+sshfs -o idmap=user ${DATACRUNCH_SSH}:/ ~/git/datacrunch
 pushd ~/git/datacrunch/
 }
 
