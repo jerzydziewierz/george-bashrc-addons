@@ -2,14 +2,13 @@
 
 #     .....................:
 # uses secret $RASPI_IP
-source secrets.sh
+
 # echo "raspi_math...........: open $RASPI_IP"
 export GRTools=$GRTools"raspi_math "
 function raspi_math()
 {
 screen -dmS raspi bash -c "ssh -X $RASPI_IP mathematica"
 }
-
 
 
 #     .....................:
@@ -25,11 +24,11 @@ screen -dmS raspi bash -c "ssh -X $RASPI_IP mathematica"
 
 #     .....................:
 # echo "clion, pycharm.......: start CLion, pycharm"
-export GRTools=$GRTools"clion pycharm "
+# export GRTools=$GRTools"clion pycharm "
 # function clion()
 # {
 #    screen -S clion -d -m bash -i -c "conda deactivate && conda deactivate && ~/prog/clion-2021.3.3/bin/clion.sh" 
-3    echo "started clion in screen. The screen sessions are now:"
+#    echo "started clion in screen. The screen sessions are now:"
 #    sl
 # }
 
@@ -82,25 +81,28 @@ echo "starting notesync in SCREEN"
 screen -S notesync -d -m bash -i -c "__notesync" 
 sl
 }
-function __notesync_internal()
+
+function __notesync()
 {
-# cd /home/mib07150/git/STL/georgerey-notes
-git add .
-git commit -m 'autosave'
-git fetch
-git merge -m 'automerge'
-git add .
-git commit -m 'autosave'
-# (git ls-files --modified --others --exclude-standard | grep . > /dev/null)
-# git push origin
-# git push grey-private
-git push public
+  cd $GEOREY_NOTES_LOCATION
+  watch -d -n 30 bash -i -c __notesync_internal
 }
 
-function __notesync(){
-cd /home/mib07150/git/STL/georgerey-notes
-watch -d -n 30 bash -i -c __notesync_internal
+function __notesync_internal()
+{
+  git add .
+  git commit -m 'autosave'
+  git fetch
+  git merge -m 'automerge'
+  git add .
+  git commit -m 'autosave'
+  # (git ls-files --modified --others --exclude-standard | grep . > /dev/null)
+  # git push origin
+  # git push grey-private
+  git push public
 }
+
+
 
 #     .....................:
 # echo "gap..................: git add, commit and push"

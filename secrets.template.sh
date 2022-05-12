@@ -10,6 +10,8 @@ export REYMONTE_IMAGE_REGISTRY_ADDRESS=secret
 export REYMONTE_IMAGE_REGISTRY_USER=secret
 export REYMONTE_IMAGE_REGISTRY_PASS=secret
 
+export NOTES_LOCATION=secret
+
 ## little list of benchmarks of cloud CPUs
 # TPISh = price per Tera integer ops per second per dolar :: MIPS/price*1e6
 # 7zip b

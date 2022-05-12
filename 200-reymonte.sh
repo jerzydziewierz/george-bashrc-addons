@@ -94,7 +94,8 @@ pushd ~/git/datacrunch/
 # ssh -X -L 11234:localhost:11234 root@host
 
 #     .....................:
- echo "kh..................: open krusader **here**"
+# echo "kh..................: open krusader **here**"
+export GRTools=$GRTools"kh "
 function kh()
 {
   local localcmd="krusader $(pwd)"
@@ -104,6 +105,6 @@ function kh()
 }
 
 function random_port()
-{
-  echo $(shuf -i 2000-65000 -n 1)
+{ # random port number between 2000 and 65535
+  echo $(shuf -i 2000-65535 -n 1)
 }

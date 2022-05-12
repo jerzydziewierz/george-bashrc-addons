@@ -2,11 +2,10 @@
 
 # echo "
 # |0-------|10-------|20-------|30-------|40-------|50-------|60-------|70-------|"
+# GRTools variable is used to store the help message for the GRTools command set.
 export GRTools=""
 # source the secrets
 . secrets.sh
-
-
 
 . 050-screen.sh
 . 100-cli.sh
