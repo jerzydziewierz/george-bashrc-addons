@@ -33,11 +33,15 @@ function registry_cleanup()
   # usage:
   # go root and manually delete the manifests of interests
   # there: /opt/docker/registry/data/docker/registry/v2/repositories/<repository>/<manifest>
-  cd /opt/docker/registry/data/docker/registry/v2/repositories
+  pushd /opt/docker/registry/data/docker/registry/v2/repositories
   ls
+  echo "you can do >> rm -r * << here -- but be careful"
+  echo "then, restart registry_cleanup"
+
   # THEN run this:
   docker exec -it gui_registry_1 bin/registry garbage-collect /etc/docker/registry/config.yml
   docker restart gui_registry_1
+  echo "I came here from: $(dirs)"
 }
 
 
