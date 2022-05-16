@@ -104,9 +104,9 @@ function gmd()
   local currentBranch=$(git symbolic-ref --short HEAD)
   git checkout devel
   git pull
-  pushd src/engine/tools
-  git pull
-  popd
+    pushd src/engine/tools
+    git pull
+    popd
   git checkout $currentBranch
   git merge devel
   cd $currentFolder
