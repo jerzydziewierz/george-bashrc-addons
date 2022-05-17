@@ -143,6 +143,7 @@ else
 fi
 
 # interesting unicode characters to try:
+# ☈ = symbol for thunderstorm
 # ⌘ ⏎ ⏏ ⏐ ⏑ ⏒ ⏓ ⏔ ⏕ ⏖ ⏗ ⏘ ⏙ ⏚ ⏛ ⏜ ⏝ ⏞ ⏟ ⏠ ⏡ ⏢ ⏣ ⏤ ⏥ ⏦ ⏧ ⏨ ⏩ ⏪ ⏫ ⏬ ⏭ ⏮ ⏯ ⏰ ⏱ ⏲ ⏳ ⏴ ⏵ ⏶ ⏷ ⏸ ⏹ ⏺ ⏻ ⏼ ⏽ ⏾ ⏿
 # more interesting unicode characters: ۩
 # Ϡ  ϡ  Ϣ  ֍  ֎  ֏ Դ Է Ը Թ Ժ Խ Ծ Կ Հ Ձ Ղ Ճ Շ Ո Չ Պ Ջ Վ Ց Փ Ք Ֆ բ ժ ի խ ծ կ ձ շ չ  պ  ջվ  տ  րփ ֆ  ֍  ֎  ֏
