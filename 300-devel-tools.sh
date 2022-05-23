@@ -103,6 +103,7 @@ function gmd()
   gap
   local currentBranch=$(git symbolic-ref --short HEAD)
   git checkout devel
+  git pull --recurse-submodules
   git pull
     pushd src/engine/tools
     git pull

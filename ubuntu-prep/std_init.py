@@ -17,6 +17,7 @@ conda install -y mamba
 alias mambao="mamba install --use-index-cache -y --channel conda-forge"
 python -m pip install -U git+https://github.com/jerzydziewierz/mict.git#egg=mict
 mambao jupyter ipython plotly numpy pandas cryptography jax python-kaleido tqdm watermark pymc3
+mambao optuna hiplot neptune-client neptune-optuna 
 python -m pip install kaleido chevron
 
 """
