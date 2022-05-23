@@ -148,3 +148,9 @@ snap install clion --classic
 # increase inotify limit
 echo fs.inotify.max_user_watches=65536 | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
+
+# install neptune
+pip install neptune-client
+pip install neptune-notebooks
+
+#
