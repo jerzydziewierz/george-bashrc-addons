@@ -21,8 +21,13 @@ export KEY_DEV_REACTAI_COM_FILE=secret
 # POPD = Peta Integer operations per dollar :: (MIPS*3600)*1e-9 / (price/hour) ,
 # higher is better (more effective per dollar)
 # electricity price = 0.257usd/kWh; assume 500W per kWh
-# 7zip b
-# assum
+# benchmark command: `7zip b` :: take last line of output:
+# CPU USED is the reported CPU load during benchamrk, used by the benchmark threads only. It could be used to calculate correction factor.
+# R/U rating, per core means performance per core;
+# R/U rating, total means performance in parallel for all CPUs used
+# report "Tot" line
+# it is normal for the output to vary by 2%-5% between runs, and it does depend on the weather
+#
 # provider          | CPU                                               | cores booked/
 #                   |                                                   |     | CPU used /
 #                   |                                                   |     |       | core perf /
@@ -41,4 +46,5 @@ export KEY_DEV_REACTAI_COM_FILE=secret
 # free and friends
 # Gradient Free-GPU | Intel(R) Xeon(R) CPU E5-2623 v4 @ 2.60GHz (406F1) |  8C |   583 |  2276 | 13254 | 0.00 | +inf ?
 # Gradient Free-GPU | Intel(R) Xeon(R) CPU E5-2623 v4 @ 2.60GHz (406F1) |  8C |   585 |  2574 | 15052 | 0.00 | +inf ?
-# react.ai dev      | Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz (50654)  | 64C |  5812 |  2291 |133192 | 0.00 | +inf ?
+# react.ai dev      | Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz (50654)  | 64C |  5837 |  2381 |138762 | 0.00 | +inf ?
+# react.ai dev      | Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz (50654)  | 64C |  5801 |  2343 |135749 | 0.00 | +inf ?
