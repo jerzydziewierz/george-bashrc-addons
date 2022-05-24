@@ -73,7 +73,7 @@ screen -t raspi bash -c 'ssh -X $RASPI_IP'
 
 function any_ssh()
 {
-ssh -X root@${DATACRUNCH_IP}
+ssh -C -X root@${DATACRUNCH_IP}
 }
 function any_cleanup_key()
 {
@@ -86,6 +86,11 @@ mkdir -p ~/git/datacrunch
 fusermount -u ~/git/datacrunch
 sshfs -o idmap=user root@${DATACRUNCH_IP}:/ ~/git/datacrunch
 pushd ~/git/datacrunch/
+}
+
+function any_unmount()
+{
+fusermount -u ~/git/datacrunch "$1"
 }
 
 # === run jupyter notebook via ssh
@@ -107,4 +112,21 @@ function kh()
 function random_port()
 { # random port number between 2000 and 65535
   echo $(shuf -i 2000-65535 -n 1)
+}
+
+
+function reactai_ssh()
+{
+
+  ssh -X -i $KEY_DEV_REACTAI_COM_FILE george@dev.reactai.com
+}
+function reactai_start_relay()
+{
+  screen -dmS dev-reactai-relay bash -c -i _reactai_relay_ssh
+}
+function _reactai_relay_ssh()
+{ # this relays port 8888 from the target machine to my machine, enabling me to see the target machine's jupyter notebook server at port 8892
+  # no X-server relay on this session!
+
+  ssh -v -i $KEY_DEV_REACTAI_COM_FILE -NL 8892:localhost:8892 george@dev.reactai.com
 }

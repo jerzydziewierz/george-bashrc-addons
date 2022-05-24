@@ -38,7 +38,7 @@ fi
 if ! grep github.com ~/.ssh/known_hosts > /dev/null
 then
      echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==" >> ~/.ssh/known_hosts
-     # bitbucket
+# Allow bitbucket as known
      echo "bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==" >> ~/.ssh/known_hosts
 fi
 if ! grep
@@ -49,9 +49,12 @@ if ! grep
 echo "Host *" >> ~/.ssh/config
 echo "    ServerAliveInterval 30" >> ~/.ssh/config
 echo "    ServerAliveCountMax 20" >> ~/.ssh/config
+echo "    Compression yes" >> ~/.ssh/config
+echo "    CompressionLevel 6" >> ~/.ssh/config
 # on the host
 echo "ClientAliveInterval 30" >> /etc/ssh/sshd_config
 echo "ClientAliveCountMax 20" >> /etc/ssh/sshd_config
+echo "Compression yes" >> /etc/ssh/sshd_config
 
 cd ~
 mkdir -p prog git prog/git
@@ -140,6 +143,14 @@ else
   echo "lagscope already installed"
 fi
 
+# ::: rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+# ::: exa
+
+git clone https://github.com/ogham/exa
+pushd exa
+cargo install
+popd
 
 
 

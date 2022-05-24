@@ -25,7 +25,7 @@ eval "$(zoxide init bash)"
 function z() {
     __zoxide_z "$@"
     echo "----"
-    exa
+    exa --icons --group-directories-first
     echo "----"
 }
 
