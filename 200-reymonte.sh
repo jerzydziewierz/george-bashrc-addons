@@ -131,3 +131,12 @@ function _reactai_relay_ssh()
 
   ssh -v -i $KEY_DEV_REACTAI_COM_FILE -NL 8892:localhost:8892 george@dev.reactai.com
 }
+
+function reactai_sshfs()
+{
+  mkdir -p ~/git/reactai
+  fusermount -u ~/git/reactai
+  sshfs -o IdentityFile=$KEY_DEV_REACTAI_COM_FILE -o idmap=user george@dev.reactai.com:/ ~/git/reactai
+  pushd ~/git/reactai/home/george
+  kh
+}

@@ -1,3 +1,5 @@
+export GEORGE_ADDONS_FOLDER=secret
+
 export DATACRUNCH_IP=secret
 export RASPI_IP=secret
 export REYMONTE_IP=secret
@@ -54,3 +56,14 @@ export KEY_DEV_REACTAI_COM_FILE=secret
 # Gradient Free-GPU | Intel(R) Xeon(R) CPU E5-2623 v4 @ 2.60GHz (406F1) |  8C |   585 |  2574 | 15052 | 0.00 | +inf ?
 # react.ai dev      | Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz (50654)  | 64C |  5837 |  2381 |138762 | 0.00 | +inf ?
 # react.ai dev      | Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz (50654)  | 64C |  5801 |  2343 |135749 | 0.00 | +inf ?
+
+# Bitbucket "x2"    | CPUs Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz | 8C | 396 | 2491 | 9866 | ?.?? | +?
+
+# -Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov :
+# 2016-05-21 p7zip Version 16.02 (locale=C.UTF-8,Utf16=on,HugeFiles=on,64 bits,
+# 8 CPUs Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz (50654),ASM,AES-NI) Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz (50654)
+# CPU Freq: - 64000000 - - - - - - - RAM size:
+# # 31306 MB,
+# CPU hardware threads: 8 RAM usage: 1765 MB,
+# Benchmark threads: 8 Compressing | Decompressing Dict Speed Usage R/U Rating | Speed Usage R/U Rating KiB/s % MIPS MIPS | KiB/s % MIPS MIPS 22: 10937 398 2675 10640 | 104168 396 2244 8885 23: 10220 397 2621 10414 | 102446 396 2241 8865 24: 10162 395 2770 10927 | 102633 398 2262 9008 25: 9892 394 2866 11295 | 99941 395 2253 8894 ---------------------------------- | ------------------------------ Avr: 396 2733 10819 | 396 2250 8913
+# Tot: 396 2491 9866
