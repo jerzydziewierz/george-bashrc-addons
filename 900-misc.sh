@@ -21,7 +21,7 @@ function rc()
 export GRTools=$GRTools"rcup "
 function rcup()
 {
-  pushd ~/git/george-bashrc-addons/
+  pushd ${GEORGE_ADDONS_FOLDER}
   git pull
   popd
   . ~/.bashrc
