@@ -1,8 +1,0 @@
-startup_message off
-defscrollback 99999
-# escape ^za
-# exec echo "SCREEN session -- note that the escape character is ^z"
-hardstaus on
-hardstatus firstline
-hardstatus string "tp8+screen %S | %= | %{= BW}escape char is ctrl-a%{= dd}"
-

@@ -16,7 +16,7 @@ function __notesync()
   echo ${TERM}
   echo "======================================"
   cd $GEOREY_NOTES_LOCATION
-  watch -d -n 120 bash -i -c __notesync_internal
+  watch -d -n 10 bash -i -c __notesync_internal
 }
 
 function __notesync_internal()
@@ -24,8 +24,10 @@ function __notesync_internal()
   echo ""
   echo ""
   echo "in __notesync_internal"
-  echo "starting notesync . .. .  my term is: "
+  echo "my term is: "
   echo ${TERM}
+  echo ""
+  echo ""
   cd $GEOREY_NOTES_LOCATION
   reset
   clear
