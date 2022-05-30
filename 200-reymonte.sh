@@ -118,18 +118,29 @@ function random_port()
 
 function reactai_ssh()
 {
-
   ssh -X -i $KEY_DEV_REACTAI_COM_FILE george@dev.reactai.com
 }
+
 function reactai_start_relay()
 {
-  screen -dmS dev-reactai-relay bash -c -i _reactai_relay_ssh
+  screen -dmS dev-reactai-relay bash -c -i _reactai_relay_jupyter
+  screen -dmS dev-reactai-relay bash -c -i _reactai_relay_tensorboard
+
 }
-function _reactai_relay_ssh()
+function _reactai_relay_jupyter()
+{ # this relays port 8888 from the target machine to my machine, enabling me to see the target machine's jupyter notebook server at port 8892
+  # no X-server relay on this session!
+  # use 8892 for jupyter
+  # use 6002 for tensorboard
+
+  ssh -v -i $KEY_DEV_REACTAI_COM_FILE -NL 8892:localhost:8892 -NL 6002:localhost:6002 george@dev.reactai.com
+}
+
+function _reactai_relay_tensorboard()
 { # this relays port 8888 from the target machine to my machine, enabling me to see the target machine's jupyter notebook server at port 8892
   # no X-server relay on this session!
 
-  ssh -v -i $KEY_DEV_REACTAI_COM_FILE -NL 8892:localhost:8892 george@dev.reactai.com
+  ssh -v -i $KEY_DEV_REACTAI_COM_FILE -NL 6002:localhost:6002 george@dev.reactai.com
 }
 
 function reactai_sshfs()

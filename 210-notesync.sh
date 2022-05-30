@@ -11,12 +11,26 @@ sl
 
 function __notesync()
 {
+  echo "in __notesync"
+  echo "starting notesync . .. .  my term is: "
+  echo ${TERM}
+  echo "======================================"
   cd $GEOREY_NOTES_LOCATION
-  watch -d -n 30 bash -i -c __notesync_internal
+  watch -d -n 120 bash -i -c __notesync_internal
 }
 
 function __notesync_internal()
 {
+  echo ""
+  echo ""
+  echo "in __notesync_internal"
+  echo "starting notesync . .. .  my term is: "
+  echo ${TERM}
+  cd $GEOREY_NOTES_LOCATION
+  reset
+  clear
+  echo "syncing notes"
+  ls
   git add .
   git commit -m 'autosave'
   git fetch
