@@ -12,7 +12,7 @@
 # multi-run capable (nothing bad happens if ran more than once)
 
 
-DEBIAN_FRONTEND=noninteractive
+export DEBIAN_FRONTEND=noninteractive
 export DEBIAN_PRIORITY=critical
 
 # == create SSH key
@@ -71,17 +71,13 @@ apt-get -qy autoclean >> /dev/null
 
 # CLI-only tools
 echo "installing CLI-only tools"
-apt install -y sshfs git make screen p7zip-full curl wget coreutils sed build-essential python3 python3-pip gcc-10 g++-10 sysstat tldr ncdu >> /dev/null
+apt install -y sshfs openssh-server git make screen p7zip-full curl wget coreutils sed build-essential python3 python3-pip gcc-10 g++-10 sysstat tldr ncdu >> /dev/null
 # if needed: gcc-11
 echo "installing gcc-11"
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test  >> /dev/null
 apt install -y gcc-11 g++-11 >> /dev/null
 
-apt install lnav
-apt install ncdu
-apt install pv
-apt install tldr
-
+apt install -y lnav ncdu pv tldr
 
 
 # apt install zoxide
@@ -113,9 +109,9 @@ if [[ ! -d ~/git/george-bashrc-addons ]];
     pushd george-bashrc-addons
     cp secrets.template.sh secrets.sh
     popd
-    echo 'pushd ~/git/george-bashrc-addons' >> ~/.bashrc
+    echo 'pushd ~/git/george-bashrc-addons >> /dev/null' >> ~/.bashrc
     echo 'george-bashrc-addons.sh' >> ~/.bashrc
-    echo 'popd' >> ~/.bashrc
+    echo 'popd >> /dev/null' >> ~/.bashrc
     source ~/.bashrc
     echo "george's bashrc addons installed"
   else
@@ -148,7 +144,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 git clone https://github.com/ogham/exa
 pushd exa
-cargo install
+cargo install --path .
 popd
 
 
