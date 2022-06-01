@@ -20,7 +20,7 @@ export REYMONTE_IMAGE_REGISTRY_USER=secret
 export REYMONTE_IMAGE_REGISTRY_PASS=secret
 
 export GEOREY_NOTES_LOCATION=secret
-# private keyfile to access george@dev.reactai.com  -- a machine kindly provided to me by Charles8
+# private keyfile to access george@dev.reactai.com  -- a machine kindly provided to me by Charles
 export KEY_DEV_REACTAI_COM_FILE=secret
 
 
@@ -56,8 +56,10 @@ export KEY_DEV_REACTAI_COM_FILE=secret
 # Gradient Free-GPU | Intel(R) Xeon(R) CPU E5-2623 v4 @ 2.60GHz (406F1) |  8C |   585 |  2574 | 15052 | 0.00 | +inf ?
 # react.ai dev      | Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz (50654)  | 64C |  5837 |  2381 |138762 | 0.00 | +inf ?
 # react.ai dev      | Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz (50654)  | 64C |  5801 |  2343 |135749 | 0.00 | +inf ?
+# Android Tablet    | ?? Huawei-something @ 4.5W                        |  8C |   697 |  1542 |  1077 | ?.?? | +?
+# Bitbucket "x2"    | CPUs Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz| 8C | 396 | 2491 | 9866 | ?.?? | +?
 
-# Bitbucket "x2"    | CPUs Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz | 8C | 396 | 2491 | 9866 | ?.?? | +?
+
 
 # -Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov :
 # 2016-05-21 p7zip Version 16.02 (locale=C.UTF-8,Utf16=on,HugeFiles=on,64 bits,

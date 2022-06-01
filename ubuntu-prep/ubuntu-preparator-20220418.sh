@@ -133,6 +133,7 @@ alias mambao="mamba install --use-index-cache -y --channel conda-forge"
 python -m pip install -U git+https://github.com/jerzydziewierz/mict.git#egg=mict
 mambao jupyter ipython plotly numpy pandas cryptography jax python-kaleido tqdm watermark pymc3
 python -m pip install kaleido
+python -m pip install bounded-pool-executor
 
 
 # ::: flatpak is needed for gimp
