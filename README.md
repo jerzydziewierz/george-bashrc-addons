@@ -1,11 +1,12 @@
 # george-bashrc-addons
+
 bash and CLI convenience tools
 
-here is a collection of convenience tools that I have gathered over time
+Here is a collection of convenience tools that I have gathered over time.
 
 They are intended to work on ubuntu 20+
 
-some are dependent on software packages already installed on the system 
+Some are dependent on software packages already installed on the system 
 
 # Summary
 
@@ -99,9 +100,9 @@ mkdir -p ~/git ~/prog
 pushd ~/git
 git clone https://github.com/jerzydziewierz/george-bashrc-addons.git ~/git/george-bashrc-addons/
 
-echo "pushd ~/git/george-bashrc-addons/" >> ~/.bashrc
+echo "pushd ~/git/george-bashrc-addons/ >> /dev/null" >> ~/.bashrc
 echo ". ~/git/george-bashrc-addons/george-bashrc-addons.sh" >> ~/.bashrc
-echo "popd" >> ~/.bashrc
+echo "popd >> /dev/null" >> ~/.bashrc
 
 pushd ~/git/george-bashrc-addons/
 cp secrets.template.sh secrets.sh

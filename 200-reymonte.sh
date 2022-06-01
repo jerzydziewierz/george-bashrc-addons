@@ -5,18 +5,18 @@
 # echo "reymonte_+ uzdrowiciel_+ ops :"
 # echo "ssh, sshfs, unmount..:  "
 # echo "start, stop .........:  "
-export GRTools=$GRTools"raspi+ uzdrowiciel+ reymonte+ _ssh _sshfs _start _stop _unmount "
+export GRTools=$GRTools"raspi+ uzdrowiciel+ reymonte+ any+ reactai+ _ssh _sshfs _start _stop _unmount _start_relay"
 function reymonte_sshfs()
 {
 fusermount -u ~/git/reymonte
-sshfs -o idmap=user paperspace@$REYMONTE_IP:/ ~/git/reymonte
+sshfs -o idmap=user paperspace@$REYMONTE_IP:/ ~/git/remote-fs/reymonte
 cd ~/git/reymonte/home/paperspace/git
 ls
 pwd
 }
 function reymonte_unmount()
 {
-fusermount -u ~/git/reymonte
+fusermount -u ~/git/remote-fs/reymonte
 }
 function reymonte_ssh()
 {
@@ -45,10 +45,10 @@ curl -X POST "https://api.paperspace.io/machines/$PAPERSPACE_REYMONTE_MACHINENAM
 function uzdrowiciel_sshfs()
 {
 cd ~
-mkdir -p ~/git/uzdrowiciel
-fusermount -u ~/git/uzdrowiciel
+mkdir -p ~/git/remote-fs/uzdrowiciel
+fusermount -u ~/git/remote-fs/uzdrowiciel
 sshfs -p 22222 -o idmap=user ${UZDROWICIEL_SFTP_ACCOUNTNAME}@${UZDROWICIEL_SFTP_SERVER}:/home/ftpq4/ ~/git/uzdrowiciel
-pushd ~/git/uzdrowiciel
+pushd ~/git/remote-fs/uzdrowiciel
 ls -la
 }
 
@@ -58,10 +58,10 @@ ls -la
 
 function raspi_sshfs()
 {
-fusermount -u ~/git/raspi
-mkdir -p ~/git/raspi
-sshfs -o idmap=user mib07150@$RASPI_IP:/ ~/git/raspi
-pushd ~/git/raspi
+fusermount -u ~/git/remote-fs/raspi
+mkdir -p ~/git/remote-fs/raspi
+sshfs -o idmap=user mib07150@$RASPI_IP:/ ~/git/remote-fs/raspi
+pushd ~/git/remote-fs/raspi
 echo $(pwd)
 }
 
@@ -83,15 +83,15 @@ function any_cleanup_key()
 function any_sshfs()
 {
 cd ~
-mkdir -p ~/git/datacrunch
-fusermount -u ~/git/datacrunch
-sshfs -o idmap=user root@${DATACRUNCH_IP}:/ ~/git/datacrunch
-pushd ~/git/datacrunch/
+mkdir -p ~/git/remote-fs/datacrunch
+fusermount -u ~/git/remote-fs/datacrunch
+sshfs -o idmap=user root@${DATACRUNCH_IP}:/ ~/git/remote-fs/datacrunch
+pushd ~/git/remote-fs/datacrunch/
 }
 
 function any_unmount()
 {
-fusermount -u ~/git/datacrunch "$1"
+fusermount -u ~/git/remote-fs/datacrunch "$1"
 }
 
 # === run jupyter notebook via ssh
@@ -110,6 +110,7 @@ function kh()
   sl
 }
 
+
 function random_port()
 { # random port number between 2000 and 65535
   echo $(shuf -i 2000-65535 -n 1)
@@ -121,13 +122,14 @@ function reactai_ssh()
   ssh -X -i $KEY_DEV_REACTAI_COM_FILE george@dev.reactai.com
 }
 
+
 function reactai_start_relay()
 {
-  screen -dmS dev-reactai-relay bash -c -i _reactai_relay_jupyter
-  # screen -dmS dev-reactai-relay bash -c -i _reactai_relay_tensorboard
+  screen -dmS dev-reactai-relay bash -c -i _reactai_relay
+
 
 }
-function _reactai_relay_jupyter()
+function _reactai_relay()
 { # this relays port 8888 from the target machine to my machine, enabling me to see the target machine's jupyter notebook server at port 8892
   # no X-server relay on this session!
   # use 8892 for jupyter
@@ -136,11 +138,31 @@ function _reactai_relay_jupyter()
   ssh -v -i $KEY_DEV_REACTAI_COM_FILE -NL 8892:localhost:8892 -NL 6002:localhost:6002 george@dev.reactai.com
 }
 
+
 function reactai_sshfs()
 {
-  mkdir -p ~/git/reactai
-  fusermount -u ~/git/reactai
-  sshfs -o IdentityFile=$KEY_DEV_REACTAI_COM_FILE -o idmap=user george@dev.reactai.com:/ ~/git/reactai
-  pushd ~/git/reactai/home/george
+  mkdir -p ~/git/remote-fs/reactai
+  fusermount -u ~/git/remote-fs/reactai
+  sshfs -o IdentityFile=$KEY_DEV_REACTAI_COM_FILE -o idmap=user george@dev.reactai.com:/ ~/git/remote-fs/reactai
+  pushd ~/git/remote-fs/reactai/home/george
   kh
+}
+
+function reactai_jupyter()
+{ # start jupyter notebook, but
+  # * with a different port
+  # * with no browser
+  # * with root allowed
+  # This is intended for ssh-relayed access.
+  #
+  # Usage:
+  # 1. on the GUI, use reactai_start_relay() to start the relay
+  # 2. on the GUI, ssh into ReactAI using reactai_ssh() and run reactai_jupyter()
+  #
+  # Future work:
+  # collapse all of this into a single command that pipes scripts through ssh straight to the target machine.
+  echo "THIS IS INTENDED TO BE RAN ON THE REACTAI host"
+  screen -S jupyter bash -c "jupyter notebook --allow-root --no-browser --port 8892"
+# jupyter notebook --allow-root --no-browser --port 11234
+# ssh -X -L 11234:localhost:11234 root@host
 }
