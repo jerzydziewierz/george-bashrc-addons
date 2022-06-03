@@ -1,5 +1,61 @@
 #!/usr/bin/env bash
 
+# finally, a good explanation of programming the bash / ansi colours:
+# https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+# https://chrisyeh96.github.io/2020/03/28/terminal-colors.html
+# ----
+# Format:
+# {ESC}[{ATTRIBUTE1;ATTRIBUTE2;ATTRIBUTE...}m
+# where:
+# ESC = \033
+# ESC in unicode: `\u001b`
+# ATTRIBUTE = 0-9
+# 0 - reset
+# 1 - bold
+# 2 - dim
+# 4 - underline
+# 5 - blink
+# 7 - reverse
+# 8 - hidden
+# 9 - strike
+# ATTRIBUTE = 30-37 # foreground default, where 0=black, 1=red, 2=green, 3=yellow, 4=blue, 5=magenta, 6=cyan, 7=white
+# ATTRIBUTE = 40-47 # background default where 0=black, 1=red, 2=green, 3=yellow, 4=blue, 5=magenta, 6=cyan, 7=white
+# RGB Colors: Foreground: "38;2;{R};{G};{B}"
+# RGB Colors: Background: "48;2;{R};{G};{B}"
+# ----
+
+
+#================================================================
+# fetch_cursor_position: returns the users cursor position
+#                        at the time the function was called
+# output "<row>:<col>"
+#================================================================
+fetch_cursor_position() {
+  local pos
+
+  IFS='[;' read -p $'\e[6n' -d R -a pos -rs || echo "failed with error: $? ; ${pos[*]}"
+  echo "${pos[1]}:${pos[2]}"
+}
+
+fetch_cursor_position_y() {
+  local pos
+
+  IFS='[;' read -p $'\e[6n' -d R -a pos -rs || echo "failed with error: $? ; ${pos[*]}"
+  echo "${pos[2]}"
+}
+
+fill_line() {
+  # whatever was printed so far, fill the rest of the line with dots
+  local y=$(fetch_cursor_position_y)
+  local columns=$(tput cols)
+  local dot_count=$((columns - y + 1))
+  printf "%${dot_count}s" | tr " " "_"
+
+
+  #local col_count
+  # $(expr  ${COLUMNS} - $(fetch_cursor_position_y) )
+}
+
 __powerline() {
     # Unicode symbols
     readonly GIT_BRANCH_CHANGED_SYMBOL='+'
@@ -111,7 +167,11 @@ __powerline() {
             local BG_EXIT="$BG_RED"
             local FG_EXIT="$FG_RED"
         fi
+
+        # start:
         PS1=""
+
+        # If i am root, make it super clear
         if [ $(whoami) = "root" ]; then
           PS1+="${BG_RED}${FG_RED}|${RESET}${FG_RED}ROOT${BG_RED}|${RESET}"
         fi
@@ -123,13 +183,20 @@ __powerline() {
         if [ ! -z "${CONDA_DEFAULT_ENV}" ]; then
           PS1+=${BG_DARKGREY1}"|"${CONDA_DEFAULT_ENV}"|"${RESET}
         fi
-        PS1+="${BG_COLOR4}\\w"
-        PS1+="$RESET${FG_COLOR6}"
-        PS1+="$(__git_info)"
-        PS1+="$BG_EXIT$RESET"
-        PS1+="$BG_EXIT$FG_BASE3 ${PS_SYMBOL} ${RESET}${FG_EXIT}${RESET} "
-    }
 
+        # show path
+        PS1+="${BG_COLOR4}\\w${RESET}"
+
+        # show git info
+        PS1+="${FG_COLOR6}$(__git_info)${BG_EXIT}"
+
+        # final prompt
+        PS1+="${RESET}"
+        PS1+="$BG_EXIT$FG_BASE3 ${PS_SYMBOL} ${RESET}${FG_EXIT}${RESET} "
+
+#        fill_line
+#        echo -e -n "\r"
+    }
     PROMPT_COMMAND=ps1
 }
 
