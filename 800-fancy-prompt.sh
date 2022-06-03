@@ -61,7 +61,8 @@ __powerline() {
     readonly GIT_BRANCH_CHANGED_SYMBOL='+'
     readonly GIT_NEED_PULL_SYMBOL='⇣'
     readonly GIT_NEED_PUSH_SYMBOL='⇡'
-    readonly PS_SYMBOL='🐧'
+    #readonly PS_SYMBOL='🐧'
+    readonly PS_SYMBOL=''
 
     # Solarized colorscheme
     readonly BG_BASE00="\\[$(tput setab 11)\\]"
@@ -150,11 +151,22 @@ __powerline() {
 
         # print the git branch segment without a trailing newline
         # branch is modified?
+
+        # original version:
+#          if [ -n "$(git status --porcelain)" ]; then
+#              printf "%s" "${BG_COLOR8}${RESET}${BG_COLOR8} $branch$marks ${FG_COLOR9}"
+#          else
+#              printf "%s" "${BG_BLUE}${RESET}${BG_BLUE} $branch$marks ${RESET}${FG_BLUE}"
+#          fi
+        # calmer colours : blue if modified, green if clean
         if [ -n "$(git status --porcelain)" ]; then
-            printf "%s" "${BG_COLOR8}$RESET$BG_COLOR8 $branch$marks $FG_COLOR9"
+            # modified
+            printf "%s" "${BG_BLUE}${RESET}${BG_BLUE} $branch$marks ${RESET}${FG_BLUE}"
         else
-            printf "%s" "${BG_BLUE}$RESET$BG_BLUE $branch$marks $RESET$FG_BLUE"
+            # clean
+            printf "%s" "${BG_GREEN}${RESET}${BG_GREEN} $branch$marks ${RESET}${FG_BLUE}"
         fi
+
     }
 
     ps1() {
