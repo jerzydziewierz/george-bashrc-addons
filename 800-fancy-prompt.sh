@@ -213,7 +213,7 @@ __powerline() {
 
         # final prompt
         PS1+="${RESET}"
-        PS1+="$BG_EXIT$FG_BASE3 ${PS_SYMBOL} ${RESET}${FG_EXIT}${RESET} "
+        PS1+="${BG_EXIT}${FG_BASE3} ${PS_SYMBOL} ${RESET}${FG_EXIT}${RESET} "
 
 #        fill_line
 #        echo -e -n "\r"
