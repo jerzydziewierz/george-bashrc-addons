@@ -95,6 +95,7 @@ __powerline() {
     readonly BG_RED="\\[$(tput setab 1)\\]"
     readonly BG_VIOLET="\\[$(tput setab 13)\\]"
     readonly BG_YELLOW="\\[$(tput setab 3)\\]"
+    readonly FG_HIDDEN="\\[$(tput setaf 7)\\]"
     readonly BOLD="\\[$(tput bold)\\]"
     readonly DIM="\\[$(tput dim)\\]"
     readonly FG_BASE00="\\[$(tput setaf 11)\\]"
@@ -125,6 +126,13 @@ __powerline() {
     readonly FG_RED="\\[$(tput setaf 1)\\]"
     readonly FG_VIOLET="\\[$(tput setaf 13)\\]"
     readonly FG_YELLOW="\\[$(tput setaf 3)\\]"
+
+
+    readonly FG_BLACK="\\[\\e[38;2;0;0;0m\\]"
+    readonly BG_BLACK="\\[\\e[48;2;0;0;0m\\]"
+    readonly BG_DARKBLUE="\\[\\e[48;2;8;8;64m\\]"
+    readonly FG_DARKBLUE="\\[\\e[38;2;8;8;64m\\]"
+
     readonly RESET="\\[$(tput sgr0)\\]"
     readonly REVERSE="\\[$(tput rev)\\]"
 
@@ -159,12 +167,13 @@ __powerline() {
 #              printf "%s" "${BG_BLUE}${RESET}${BG_BLUE} $branch$marks ${RESET}${FG_BLUE}"
 #          fi
         # calmer colours : blue if modified, green if clean
+        #       
         if [ -n "$(git status --porcelain)" ]; then
             # modified
-            printf "%s" "${BG_BLUE}${RESET}${BG_BLUE} $branch$marks ${RESET}${FG_BLUE}"
+            printf "%s" "${BG_DARKBLUE}${RESET}${BG_DARKBLUE} $branch$marks ${RESET}${FG_DARKBLUE}"
         else
             # clean
-            printf "%s" "${BG_GREEN}${RESET}${BG_GREEN} $branch$marks ${RESET}${FG_BLUE}"
+            printf "%s" "${FG_GRASS22}${RESET}${FG_GRASS22}${BG_BLACK} $branch$marks ${RESET}${FG_BLACK}"
         fi
 
     }
