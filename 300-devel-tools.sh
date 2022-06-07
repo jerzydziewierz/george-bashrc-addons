@@ -124,3 +124,23 @@ function cdt()
 export GRTools=$GRTools"dfh "
 alias dfh="df -h | grep -v 100% | grep -v tmpfs | grep -v udev"
 
+
+#     .....................:
+# echo "start_jupyter.......: synchronize daily-notes"
+function start_jupyter()
+{
+echo "starting jupyter notebook from ~,  in SCREEN"
+
+screen -S jupyter -d -m bash -i -c "__jupyter"
+sl
+}
+
+function __jupyter()
+{
+  echo "in __jupyter"
+  echo "starting jupyter with home folder as root..."
+  echo "======================================"
+  cd ~
+  conda activate jupyter
+  jupyter notebook
+}

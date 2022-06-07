@@ -148,7 +148,9 @@ __powerline() {
 
         # get current branch name or short SHA1 hash for detached head
         branch="$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)"
-        [ -n "$branch" ] || return  # git branch not found
+        if [[ -z "$branch" ]]; then
+            return # git branch not found
+        fi
 
         # how many commits local branch is ahead/behind of remote?
         stats="$(git status --porcelain --branch | grep '^##' | grep -o '\[.\+\]$')"

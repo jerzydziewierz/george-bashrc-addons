@@ -23,6 +23,8 @@ export GEOREY_NOTES_LOCATION=secret
 # private keyfile to access george@dev.reactai.com  -- a machine kindly provided to me by Charles
 export KEY_DEV_REACTAI_COM_FILE=secret
 
+export github_public_push_email=secret
+
 
 ## little list of benchmarks of cloud CPUs
 # benchmark

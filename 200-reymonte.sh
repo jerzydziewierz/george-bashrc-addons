@@ -6,7 +6,7 @@
 # echo "ssh, sshfs, unmount..:  "
 # echo "start, stop .........:  "
 export GRTools=$GRTools"raspi+ uzdrowiciel+ reymonte+ any+ reactai+ _ssh _sshfs _start _stop _unmount _start_relay"
-function reymonte_sshfs()
+function rfs_reymonte()
 {
 fusermount -u ~/git/reymonte
 sshfs -o idmap=user paperspace@$REYMONTE_IP:/ ~/git/remote-fs/reymonte
@@ -14,11 +14,11 @@ cd ~/git/reymonte/home/paperspace/git
 ls
 pwd
 }
-function reymonte_unmount()
+function rfs_reymonte_unmount()
 {
 fusermount -u ~/git/remote-fs/reymonte
 }
-function reymonte_ssh()
+function rsh_reymonte_ssh()
 {
 ssh -X paperspace@$REYMONTE_IP
 }
@@ -26,13 +26,13 @@ ssh -X paperspace@$REYMONTE_IP
 # export PAPERSPACE_APIKEY=db2bf2e24c1acd37eabdf4fa418c9c
 # uses secret PAPERSPACE_APIKEY
 # uses secret PAPERSPACE_REYMONTE_MACHINENAME
-function reymonte_start()
+function rsh_reymonte_start()
 {
   # options: -v
 curl -X POST "https://api.paperspace.io/machines/$PAPERSPACE_REYMONTE_MACHINENAME/start" -H "X-API-Key: $PAPERSPACE_APIKEY"
 }
 # echo "reymonte_stop.....: stop reymonte"
-function reymonte_stop()
+function rsh_reymonte_stop()
 {
   # options: -v
 curl -X POST "https://api.paperspace.io/machines/$PAPERSPACE_REYMONTE_MACHINENAME/stop" -H "X-API-Key: $PAPERSPACE_APIKEY"
@@ -42,7 +42,7 @@ curl -X POST "https://api.paperspace.io/machines/$PAPERSPACE_REYMONTE_MACHINENAM
 
 # ============================= uzdrowiciel machine
 # uses secret UZDROWICIEL_SFTP_ACCOUNTNAME
-function uzdrowiciel_sshfs()
+function rfs_uzdrowiciel_sshfs()
 {
 cd ~
 mkdir -p ~/git/remote-fs/uzdrowiciel
@@ -56,7 +56,7 @@ ls -la
 
 # echo "raspi_sshfs......: open sshfs connection to 192.168.3.2/"
 
-function raspi_sshfs()
+function rfs_raspi_sshfs()
 {
 fusermount -u ~/git/remote-fs/raspi
 mkdir -p ~/git/remote-fs/raspi
@@ -67,20 +67,20 @@ echo $(pwd)
 
 #     .....................:
 # echo "raspi_ssh..........: open $RASPI_IP
-function raspi_ssh()
+function rsh_raspi_ssh()
 {
 screen -t raspi bash -c 'ssh -X $RASPI_IP'
 }
 
-function any_ssh()
+function rsh_datacrunch()
 {
 ssh -C -X root@${DATACRUNCH_IP}
 }
-function any_cleanup_key()
+function rsh_datacrunch_cleanup_key()
 {
   ssh-keygen -f "/home/mib07150/.ssh/known_hosts" -R "${DATACRUNCH_IP}"
 }
-function any_sshfs()
+function rfs_datacrunch_sshfs()
 {
 cd ~
 mkdir -p ~/git/remote-fs/datacrunch
@@ -89,7 +89,7 @@ sshfs -o idmap=user root@${DATACRUNCH_IP}:/ ~/git/remote-fs/datacrunch
 pushd ~/git/remote-fs/datacrunch/
 }
 
-function any_unmount()
+function rfs_datacrunch_nmount()
 {
 fusermount -u ~/git/remote-fs/datacrunch "$1"
 }
@@ -117,13 +117,13 @@ function random_port()
 }
 
 
-function reactai_ssh()
+function rsh_reactai_ssh()
 {
   ssh -X -i $KEY_DEV_REACTAI_COM_FILE george@dev.reactai.com
 }
 
 
-function reactai_start_relay()
+function rsh_reactai_relay()
 {
   screen -dmS dev-reactai-relay bash -c -i _reactai_relay
 
@@ -139,7 +139,7 @@ function _reactai_relay()
 }
 
 
-function reactai_sshfs()
+function rfs_reactai_sshfs()
 {
   mkdir -p ~/git/remote-fs/reactai
   fusermount -u ~/git/remote-fs/reactai
