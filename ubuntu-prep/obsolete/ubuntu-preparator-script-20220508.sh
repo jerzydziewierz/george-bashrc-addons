@@ -21,7 +21,9 @@ if [[ ! -f ~/.ssh/id_ed25519.pub ]];
     echo "creating new local ssh key"
         pushd ~/.ssh
         yes "" | ssh-keygen -t ed25519
+        echo "-----------------------"
         cat ~/.ssh/id_ed25519.pub
+        echo "-----------------------"
         eval "$(ssh-agent -s)"
         ssh-add
         popd # ~/.ssh

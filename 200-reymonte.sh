@@ -5,6 +5,21 @@
 # echo "reymonte_+ uzdrowiciel_+ ops :"
 # echo "ssh, sshfs, unmount..:  "
 # echo "start, stop .........:  "
+function rsh_stl()
+{
+  ssh -X 10.1.206.23
+}
+
+function rfs_stl()
+{
+  mkdir -p ~/git/remote-fs/stl
+  fusermount -u ~/git/remote-fs/stl
+  sshfs -o idmap=user mib07150@10.1.206.23:/ ~/git/remote-fs/stl
+  cd ~/git/remote-fs/stl/home/mib07150/
+  ls
+  pwd
+}
+
 export GRTools=$GRTools"raspi+ uzdrowiciel+ reymonte+ any+ reactai+ _ssh _sshfs _start _stop _unmount _start_relay"
 function rfs_reymonte()
 {
