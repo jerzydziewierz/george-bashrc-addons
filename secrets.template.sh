@@ -70,6 +70,8 @@ export github_public_push_email=secret
 # Paperspace C2                | Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz (406F1) |    2C |   192 |  2453 |  4693 | 0.009|  1.877
 # Datacrunch CPU16V            | AMD EPYC-Rome Processor (830F10)                  |   16C |  1336 |  3875 | 51866 | 0.40 |  0.466
 # Datacrunch CPU32V            | AMD EPYC-Rome Processor (830F10)                  |   32C |  2839 |  3443 | 97603 | 0.80 |  0.439
+# Datacrunch CPU32V            | AMD EPYC-Rome Processor (830F10)                  |    1C |   100 |  3889 |  3889 | 0.80 |  ?????
+
 # Paperspace C9                | Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz         |   24C |  2152 |  2023 | 43421 | 0.90 |  0.173
 # Paperspace C9                | Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz (406F1) |   24C |  2128 |  2025 | 43004 | 0.90 |  0.172
 # ???????                      | AMD EPYC 7642 48-Core Processor,                  |   22C |  1807 |  3646 | 65944 |      |

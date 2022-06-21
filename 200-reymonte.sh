@@ -62,7 +62,7 @@ function rfs_uzdrowiciel_sshfs()
 cd ~
 mkdir -p ~/git/remote-fs/uzdrowiciel
 fusermount -u ~/git/remote-fs/uzdrowiciel
-sshfs -p 22222 -o idmap=user ${UZDROWICIEL_SFTP_ACCOUNTNAME}@${UZDROWICIEL_SFTP_SERVER}:/home/ftpq4/ ~/git/uzdrowiciel
+sshfs -p 22222 -o idmap=user ${UZDROWICIEL_SFTP_ACCOUNTNAME}@${UZDROWICIEL_SFTP_SERVER}:/home/ftpq4/ ~/git/remote-fs/uzdrowiciel
 pushd ~/git/remote-fs/uzdrowiciel
 ls -la
 }

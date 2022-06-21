@@ -74,6 +74,9 @@ apt-get -qy autoclean >> /dev/null
 # CLI-only tools
 echo "installing CLI-only tools"
 apt install -y sshfs openssh-server git make screen p7zip-full curl wget coreutils sed build-essential python3 python3-pip gcc-10 g++-10 sysstat tldr ncdu >> /dev/null
+
+apt install -y sshfs
+
 # if needed: gcc-11
 echo "installing gcc-11"
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test  >> /dev/null
