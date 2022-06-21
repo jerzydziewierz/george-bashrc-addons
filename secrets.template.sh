@@ -80,4 +80,5 @@ export github_public_push_email=secret
 # react.ai dev -mmt1 -md22     | Intel(R) Xeon(R) Gold 6142 CPU @ 2.60GHz (50654)  | 1/64C |   100 |  4367 |   --- | 0.00 | +inf ?
 # Android Tablet               | ?? Huawei-something @ 4.5W                        |    8C |   697 |  1542 |  1077 | ?.?? | +?
 # Bitbucket "x2"               | CPUs Intel(R) Xeon(R) Platinum 8175M CPU @ 2.50GHz|    8C |   396 |  2491 |  9866 | ?.?? | +?
-
+# STL bpfeil-precision3440     | Intel(R) i7-10800 @ 2.90GHz                       |   16C |  1486 |  3412 | 50433 | ?.?? | +inf?
+# STL bpfeil-precision3440     | Intel(R) i7-10800 @ 2.90GHz                       |    1C |   100 |  5508 |  5508 | ?.?? | +inf?

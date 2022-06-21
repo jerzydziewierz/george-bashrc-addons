@@ -41,7 +41,8 @@ sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt install -y gcc-11 g++-11
 
 # desktop tools
-apt install -y xclock kate krusader qalculate vlc shutter fsearch
+# fsearch is not available on ubuntu 18
+apt install -y x11-apps kate krusader qalculate vlc shutter fsearch
 apt install -y ffmpeg gimp inkscape gparted
 apt install -y gnome-tweak-tool gnome-shell-extensions
 # fsearch filesystem indexing and search

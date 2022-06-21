@@ -13,6 +13,7 @@ export GRTools=""
 # load reymonte commands
 . 200-reymonte.sh
 . 210-notesync.sh
+. 215-vpn-stl.sh
 . 300-devel-tools.sh
 . 400-docker.sh
 . 800-fancy-prompt.sh
