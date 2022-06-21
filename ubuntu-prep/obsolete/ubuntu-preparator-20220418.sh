@@ -195,9 +195,11 @@ popd
 # == btop from source
 
 git clone https://github.com/aristocratos/btop.git
-cd btop
+pushd btop
 make
 make install
+popd
+
 
 # btop from release 
 # https://github.com/aristocratos/btop/releases/

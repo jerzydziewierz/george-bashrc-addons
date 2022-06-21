@@ -67,6 +67,11 @@ pushd ~/git/remote-fs/uzdrowiciel
 ls -la
 }
 
+function rsh_uzdrowiciel()
+{
+ssh -p 22222 ${UZDROWICIEL_SFTP_ACCOUNTNAME}@${UZDROWICIEL_SFTP_SERVER}
+}
+
 
 
 # echo "raspi_sshfs......: open sshfs connection to 192.168.3.2/"
