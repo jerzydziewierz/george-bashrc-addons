@@ -39,13 +39,36 @@ apt install -y sshfs git make screen p7zip-full curl wget coreutils sed build-es
 # if needed: gcc-11
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt install -y gcc-11 g++-11
+apt install -y minicom  # for serial port debugging
+
 
 # desktop tools
 # fsearch is not available on ubuntu 18
 apt install -y x11-apps kate krusader qalculate vlc shutter fsearch
 apt install -y ffmpeg gimp inkscape gparted
 apt install -y gnome-tweak-tool gnome-shell-extensions
+apt install -y gtkterm  # for serial port debugging
 # fsearch filesystem indexing and search
+
+## install tools for mechanical design:
+#apt install -y kicad kicad-pcbnew
+#apt install -y freecad
+
+## install sexy tools:
+#apt install -y kdenlive
+#apt install -y krita
+
+# install wifi hacking tools:
+#apt install -y kismet
+
+# install tools for data analysis:
+#apt install -y gnuplot
+
+
+
+
+
+
 
 
 
