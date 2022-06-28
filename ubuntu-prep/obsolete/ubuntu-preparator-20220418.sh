@@ -159,6 +159,10 @@ mambao jupyter ipython plotly numpy pandas cryptography jax python-kaleido tqdm 
 python -m pip install kaleido
 python -m pip install bounded-pool-executor
 
+python -m pip install devtools[pygments]
+# add the sitecustomize.py to the python startup script
+mkdir -p $(python3 -m site --user-site)
+cp sitecustomize.py $(python3 -m site --user-site)
 
 # ::: flatpak is needed for gimp
 sudo apt install -y flatpak

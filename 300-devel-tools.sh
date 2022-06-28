@@ -76,12 +76,21 @@ function kilidar()
 export GRTools=$GRTools"gap "
 function gap()
 {
-pushd $(git rev-parse --show-toplevel)
+pushd "$(git rev-parse --show-toplevel)" || exit 1
+  gaa $1
+  git push origin
+popd
+}
+
+# git add all and commit -- do everything that gap used to do except for push
+function gaa()
+{
+  pushd "$(git rev-parse --show-toplevel)" || exit 1
   if [ -z "$1" ]; then
     echo "gap: using default message"
     local msg="autosave"
   else
-    echo "gap: " $1
+    echo "gap: $1"
     local msg=$1
     fi
   git add .
@@ -91,32 +100,37 @@ pushd $(git rev-parse --show-toplevel)
   git add .
   git commit -m "post-auto-merge+$msg"
   git push origin
-popd
+popd || echo "popd failed in gaa $1"
 }
+
 
 # echo "gmd..................: git merge devel branch"
 export GRTools=$GRTools"gmd "
 function gmd()
 {
-  local currentFolder=$(pwd)
+  local currentFolder
+  currentFolder=$(pwd)
   cdr
-  gap
-  local currentBranch=$(git symbolic-ref --short HEAD)
+  gaa
+  local currentBranch
+  currentBranch=$(git symbolic-ref --short HEAD)
   git checkout devel
   git pull --recurse-submodules
   git pull
-    pushd src/engine/tools
+    pushd src/engine/tools || echo "pushd src/engine/tools failed" && exit 1
     git pull
-    popd
-  git checkout $currentBranch
+    git pull
+    popd || echo "popd failed in gmd" && exit 1
+  { git checkout devel-reference && git pull } || echo "git checkout devel-reference failed - continuing"
+  git checkout "${currentBranch}"
   git merge devel
-  cd $currentFolder
+  cd "$currentFolder" || echo "cd $currentFolder failed" && exit 1
 }
 
 # echo "pt..................: push to tools. Dev helper"
 function cdt()
 {
-  pushd src/engine/tools
+  pushd src/engine/tools || echo "pushd src/engine/tools failed" && exit 1
   git status
 }
 #     .....................:
