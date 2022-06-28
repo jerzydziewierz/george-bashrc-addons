@@ -114,16 +114,29 @@ function gmd()
   gaa
   local currentBranch
   currentBranch=$(git symbolic-ref --short HEAD)
+  echo "going to devel..."
   git checkout devel
   git pull --recurse-submodules
   git pull
+  {
+    echo "going to tools..."
     pushd src/engine/tools || echo "pushd src/engine/tools failed" && exit 1
+    gaa
+    git checkout devel
     git pull
-    git pull
-    popd || echo "popd failed in gmd" && exit 1
-  { git checkout devel-reference && git pull } || echo "git checkout devel-reference failed - continuing"
+    popd
+  } || echo "updating tools failed" && exit 1
+
+  {
+    echo "updating devel-reference..."
+    git checkout devel-reference
+    git mege devel
+    echo "done."
+  } || echo "git checkout devel-reference failed - continuing"
+  echo "going back to $currentBranch..."
   git checkout "${currentBranch}"
   git merge devel
+  echo "going back to $currentFolder..."
   cd "$currentFolder" || echo "cd $currentFolder failed" && exit 1
 }
 
