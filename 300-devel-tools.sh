@@ -120,24 +120,26 @@ function gmd()
   git pull
   {
     echo "going to tools..."
-    pushd src/engine/tools || echo "pushd src/engine/tools failed" && exit 1
+    {
+      pushd src/engine/tools
+    } || { echo "pushd src/engine/tools failed" ; return ; }
     gaa
     git checkout devel
     git pull
     popd
-  } || echo "updating tools failed" && exit 1
+  } || { echo "updating tools failed" && return ; }
 
   {
     echo "updating devel-reference..."
     git checkout devel-reference
-    git mege devel
+    git merge devel
     echo "done."
-  } || echo "git checkout devel-reference failed - continuing"
+  } || { echo "git checkout devel-reference failed - continuing"; }
   echo "going back to $currentBranch..."
   git checkout "${currentBranch}"
   git merge devel
   echo "going back to $currentFolder..."
-  cd "$currentFolder" || echo "cd $currentFolder failed" && exit 1
+  cd "$currentFolder" || { echo "cd $currentFolder failed" ;  return; }
 }
 
 # echo "pt..................: push to tools. Dev helper"
