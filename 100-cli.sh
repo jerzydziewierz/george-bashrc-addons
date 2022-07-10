@@ -63,7 +63,20 @@ mkdir -p $1
 cd $1
 }
 
-
+# pwdx : copy current folder to clipboard, and display the contents of the current folder
+function pwdx()
+{
+  # save the current selection in the backup
+  # xsel --exchange
+  # send pwd to both clipboards -- the X-window and the primary clipboard
+  pwd | xsel --clipboard
+  echo "----"
+  pwd
+  echo "----"
+  exa -l
+  echo "----"
+  pwd | xsel --primary
+}
 # echo "ctrl-R, ctrl-T.......: last command, file search"
 export GRTools=$GRTools"ctrl-R ctrl-T "
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

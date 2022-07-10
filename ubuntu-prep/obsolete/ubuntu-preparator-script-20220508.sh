@@ -84,6 +84,9 @@ apt install -y gcc-11 g++-11 >> /dev/null
 
 apt install -y lnav ncdu pv tldr
 
+# xsel is a command line utility for copying and pasting text from the X11 clipboard.
+apt install -y xsel
+
 
 # apt install zoxide
 # after this, one needs to add "eval "$(zoxide init bash)"" to .bashrc
