@@ -145,7 +145,7 @@ function gmd()
 # echo "pt..................: push to tools. Dev helper"
 function cdt()
 {
-  pushd src/engine/tools || echo "pushd src/engine/tools failed" && exit 1
+  pushd src/engine/tools || echo "pushd src/engine/tools failed"
   git status
 }
 #     .....................:
