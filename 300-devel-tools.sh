@@ -77,7 +77,7 @@ export GRTools=$GRTools"gap "
 function gap()
 {
 pushd "$(git rev-parse --show-toplevel)" || exit 1
-  gaa $1
+  gaa "$1"
   git push origin
 popd
 }

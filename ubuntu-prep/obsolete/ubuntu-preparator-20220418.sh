@@ -300,3 +300,9 @@ popd # lagscope
 popd # git
 
 
+
+# OBS is a desktop and webcam streaming lsb_release -a
+# https://obsproject.com/download#linux
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt update
+sudo apt install ffmpeg obs-studio

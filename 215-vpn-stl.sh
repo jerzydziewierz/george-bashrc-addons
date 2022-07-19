@@ -1,11 +1,36 @@
 function start_vpn()
 {
-  openvpn3 session-start --config ${GEORGE_ADDONS_FOLDER}/secrets/vpn.ovpn
+  echo "current IP : $(curl --no-progress-meter ifconfig.me)"
+  echo "---------- here are the sessions:"
+  openvpn3 sessions-list
+  echo "---------- attempting to stop the session..."
+  openvpn3 session-start --config ${GEORGE_ADDONS_FOLDER}/secrets/vpn-paris.ovpn
+  echo "---------- here are the sessions after attempting to start:"
+  openvpn3 sessions-list
+  echo "---------- sleeping 7 seconds . . . . "
+  for i in {1..7}; do echo -n "." && sleep 1; done
+  openvpn3 sessions-list
+  echo "current IP : $(curl --no-progress-meter ifconfig.me)"
 }
 
 function stop_vpn()
 {
-  openvpn3 session-manage --config ${GEORGE_ADDONS_FOLDER}/secrets/vpn.ovpn --disconnect
+  echo "---------- here are the sessions:"
+  openvpn3 sessions-list
+  echo "---------- attempting to stop the session..."
+  openvpn3 session-manage --config ${GEORGE_ADDONS_FOLDER}/secrets/vpn-paris.ovpn --disconnect
+  echo "---------- here are the sessions after attempting to stop:"
+  openvpn3 sessions-list
+
+}
+
+function reset_vpn_sessions()
+{
+  for session in $(awk '{print $2}' <<< $(openvpn3 sessions-list  | grep Path:))
+  do
+    echo "---------- attempting to stop the session ${session} ..."
+    openvpn3 session-manage --path ${session} --disconnect
+  done
 }
 
 function start_stl_webcam()
